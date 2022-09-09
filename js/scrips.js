@@ -150,15 +150,14 @@ const calculateTime = runningTime => {
     if(valueP2 <= 9 && valueP1 > 10){
         
         saveScoreInLineOne(valueP1, 1);
+        countSetPlayer(1)
         select_id("setPlayer1").value = result.data.Sets.player1.countSets + 1;
         select_id('setsResumePlayer1').innerHTML = result.data.Sets.player1.countSets + 1;
         select_id("BtnPlusPlayer2").disabled = true
         select_id("BtnPlusPlayer1").disabled = true
         stateSet = false
         select_id('EndSet').disabled = false;
-        countSetPlayer(1)
-
-        return
+         return
     
     }else{
 
@@ -188,14 +187,14 @@ const calculateTime = runningTime => {
                 }else if(dif > 1){
 
                     saveScoreInLineOne(valueP1, 1);
-            
+                    countSetPlayer(1)
                     select_id("setPlayer1").value = result.data.Sets.player1.countSets + 1;
                     select_id('setsResumePlayer1').innerHTML = result.data.Sets.player1.countSets + 1;
                     select_id("BtnPlusPlayer2").disabled = true
                     select_id("BtnPlusPlayer1").disabled = true
                     stateSet = false
                     select_id('EndSet').disabled = false;
-                    countSetPlayer(1)
+                   
                 }
     }
             
@@ -214,13 +213,13 @@ const calculateTime = runningTime => {
     if(valueP1 <= 9 && valueP2 > 10){
         
         saveScoreInLineTwo(valueP2, 1);
+        countSetPlayer(2)
         select_id("setPlayer2").value = result.data.Sets.player2.countSets + 1;
         select_id('setsResumePlayer2').innerHTML = result.data.Sets.player2.countSets + 1;
         select_id("BtnPlusPlayer2").disabled = true
         select_id("BtnPlusPlayer1").disabled = true
         stateSet = false
         select_id('EndSet').disabled = false;
-        countSetPlayer(2)
         return
     
     }else{
@@ -251,14 +250,14 @@ const calculateTime = runningTime => {
                 }else if(dif > 1){
 
                     saveScoreInLineTwo(valueP2, 1);
-            
+                    countSetPlayer(2)
                     select_id("setPlayer2").value = result.data.Sets.player1.countSets + 1;
                     select_id('setsResumePlayer2').innerHTML = result.data.Sets.player2.countSets + 1;
                     select_id("BtnPlusPlayer2").disabled = true
                     select_id("BtnPlusPlayer1").disabled = true
                     stateSet = false
                     select_id('EndSet').disabled = false;
-                    countSetPlayer(2)
+                    
                 }
     }
             
@@ -281,7 +280,7 @@ function resScoreP1(){
 
     
       
-        select_id("BtnPlusPlayer2").disabled = false
+        select_id("BtnPlusPlayer1").disabled = false
 
         valueP1 = valueP1 - 1 
         select_id('player1').value = valueP1
@@ -326,69 +325,58 @@ function resScoreP1(){
 
   function resScoreP2(){
 
+    const result = getDataLocalStorage()
 
-
-        valueP2 = parseInt(select_id('player2').value)
-        valueP1 = parseInt(select_id('player1').value)
-
-        if(valueP2 < 1 ){
-            return
-        }
-        const result = getDataLocalStorage()
-        select_id("BtnMinusPlayer1").disabled = false
-        valueP2 = valueP2 - 1 
-        select_id('player2').value = valueP2
-        alternator ++;
-    if(valueP1 <= 9 && valueP2 > 10){
-        
-        saveScoreInLineTwo(valueP2, 1);
-        select_id("setPlayer2").value = result.data.Sets.player2.countSets - 1;
-        select_id('setsResumePlayer2').innerHTML = result.data.Sets.player2.countSets - 1;
-        select_id("BtnPlusPlayer2").disabled = true
-        select_id("BtnPlusPlayer1").disabled = true
-        stateSet = false
-        select_id('EndSet').disabled = false;
-        countSetPlayer(2)
-        return
+    valueP2 = parseInt(select_id('player2').value)
+    valueP1 = parseInt(select_id('player1').value)
+    setPlayer2 = select_id("setPlayer2").value 
     
-    }else{
+if(valueP2 < 1){
+    return
+}
 
-        select_id('player2').value = valueP2
-        if(alternator === 2){
-            serviceMatch()
+
+  
+    select_id("BtnPlusPlayer2").disabled = false
+
+    valueP2 = valueP2 - 1 
+    select_id('player2').value = valueP2
+    indicador ++;
+    if(indicador === 1){
+        serviceMatch()
+        alternator =  1
+    }
+
+    if(indicador === 2){
+        serviceMatch()
+    }
+    indicador = 0
+
+    if(setPlayer2 > 0){
+
+        if(indicador === 1){
+            //serviceMatch()
+            alternator =  1
         }
+        
+        var data =  result.data.Sets.player2.countSets - 1
+        result.data.Sets.player2.countSets = data
+        localStorage.setItem("matchActual", JSON.stringify(result.data))
+        const resultNew = getDataLocalStorage()
+        select_id("setPlayer2").value = resultNew.data.Sets.player2.countSets;
+        select_id('setsResumePlayer2').innerHTML = resultNew.data.Sets.player2.countSets;
         saveScoreInLineTwo(valueP2, 0);
-  
+        countSetPlayer(2)
+        select_id("BtnPlusPlayer2").disabled = false
+        select_id("BtnPlusPlayer1").disabled = false
+        stateSet = false
+        select_id('EndSet').disabled = true;
+        return
     }
-        
-    if(valueP2 >=10 && valueP1 >= 10){
-  
-        select_id('player2').value = valueP2
+
+    select_id('player2').value = valueP2 
+    saveScoreInLineTwo(valueP2, 0);       
     
-            if(alternator === 1){
-                serviceMatch()
-            }
-                
-                let dif = 0
-                dif = (valueP2 - valueP1)
-
-                if(dif <= 1){
-
-                saveScoreInLineTwo(valueP2, 0);
-
-                }else if(dif > 1){
-
-                    saveScoreInLineTwo(valueP2, 1);
-            
-                    select_id("setPlayer2").value = result.data.Sets.player1.countSets - 1;
-                    select_id('setsResumePlayer2').innerHTML = result.data.Sets.player2.countSets - 1;
-                    select_id("BtnPlusPlayer2").disabled = true
-                    select_id("BtnPlusPlayer1").disabled = true
-                    stateSet = false
-                    select_id('EndSet').disabled = false;
-                    countSetPlayer(2)
-                }
-    }
             
   }
 
