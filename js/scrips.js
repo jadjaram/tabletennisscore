@@ -569,6 +569,8 @@ function changeService(){
    if(stateSet === true){
         select_id('EndSet').disabled = true;
     }
+     
+     serviceMatch()
 
     //if(result.data.service.player1 === false){
     //    serviceMatch()
