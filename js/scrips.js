@@ -580,7 +580,7 @@ function changeService(){
  select_id('finalMatch').onclick = ()=>{
     
     Swal.fire({
-        title: 'Desea Conservar la Informacion?',
+        title: 'Desea Conservar la Información?',
         showDenyButton: true,
         showCancelButton: true,
         confirmButtonText: 'Guardar',
@@ -593,14 +593,14 @@ function changeService(){
           Swal.fire({
             position: 'top-end',
             icon: 'success',
-            title: 'La informacion fue guardada',
+            title: 'La información fue guardada',
             showConfirmButton: false,
             timer: 1500
           })
 
         } else if (result.isDenied) {
           deleteStorage()
-          Swal.fire('Changes are not saved', '', 'info')
+          Swal.fire('No se guardaron cambios', '', 'info')
         }
       })
 
