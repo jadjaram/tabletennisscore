@@ -566,13 +566,13 @@ function changeService(){
     select_id("BtnPlusPlayer1").disabled = false;
     CountSet()
 
-    if(stateSet === true){
+   if(stateSet === true){
         select_id('EndSet').disabled = true;
     }
 
-    if(result.data.service.player1 === false){
-        serviceMatch()
-    }
+    //if(result.data.service.player1 === false){
+    //    serviceMatch()
+   // }
     
 
  }
