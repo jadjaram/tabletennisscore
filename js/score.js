@@ -26,13 +26,15 @@ function getPlayerStorage(){
          doublesTwo = data.PlayerDoubles[1]
          newDoublesOne = doublesOne.split(" ")
          newDoublesTwo = doublesTwo.split(" ")
-    }
-
-    if(data.bestOf === "5" ){
+        
+        if(data.bestOf === "5" ){
         $(".hide2").toggle();
         $('td:nth-child(7)').toggle();
         $('td:nth-child(8)').toggle();
   } 
+    }
+
+
 
     if(data){
 
