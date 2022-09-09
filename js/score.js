@@ -15,10 +15,11 @@ function getPlayerStorage(){
     const dataLocal =  localStorage.getItem("matchActual")//Storage
     const data = JSON.parse(dataLocal)
 
-    const doublesOne = ""
-    const doublesTwo = ""
-    const newDoublesOne = ""
-    const newDoublesTwo = ""
+    var doublesOne = ""
+    var doublesTwo = ""
+    var newDoublesOne = ""
+    var newDoublesTwo = ""
+    
     if(data){
 
          doublesOne = data.PlayerDoubles[0]
