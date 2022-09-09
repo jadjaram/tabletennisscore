@@ -113,13 +113,22 @@ function readStorage(){
         if(data.sumSets === 0){
             select_id('pointsPlayerOneInLine').innerHTML = data.Sets.player1.score[0]
             select_id('pointsPlayerTwoInLine').innerHTML = data.Sets.player2.score[0]
+            
             if(data.InitialService.player1 ===  true){
+
                 select_id('iconballP1').style.opacity = 1
                 select_id('iconballP2').style.opacity = 0
-            }else{
+
+            }else if(data.InitialService.player2 ===  true){
+
                 select_id('iconballP2').style.opacity = 1
                 select_id('iconballP1').style.opacity = 0
+                
+            }else if (data.InitialService.player1 ===  false && data.InitialService.player1 === false ){
+                select_id('iconballP2').style.opacity = 0
+                select_id('iconballP1').style.opacity = 0
             }
+            
         }else if(data.sumSets === 1){
             select_id('pointsPlayerOneInLine').innerHTML = data.Sets.player1.score[1]
             select_id('pointsPlayerTwoInLine').innerHTML = data.Sets.player2.score[1]
