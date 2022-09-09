@@ -30,6 +30,7 @@ select_id('finalMatch').disabled = true
 select_id('warmUp').disabled = true
 select_id('EndSet').disabled = true
 select_id('GiroScore').disabled = true
+select_id('view_match').disabked = true
 
 select_id('play-pause').onclick = ()=> {playPause()}
 select_id('stop').onclick = ()=> {stop()}
