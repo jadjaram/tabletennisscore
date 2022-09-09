@@ -271,6 +271,7 @@ function readDataLocal(){
         select_id("initialService1").disabled = false;
         select_id("initialService2").disabled = false;
         select_id('GiroScore').disabled = false
+        select_id('view_match').disabked = false
 
 
           if(result.data.modality === "dobles"){
