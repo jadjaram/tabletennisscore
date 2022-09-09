@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href=//cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css rel="stylesheet">
+    <script src=//kit.fontawesome.com/af551db88b.js crossorigin="anonymous"></script>
+    <script src=//cdn.jsdelivr.net/npm/sweetalert2@11></script>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body class="body-score" id="body-score">
+
+    <div class="change-color">
+        <button type="button" style="color: #fff ;" id="btn1" class="btn btn-light btn-sm mt-2">
+            <i class="fas fa-circle" style="color: #222 ;"></i>
+        </button>
+    </div>
+
+    <div class="container-fluid d-flex align-items-center justify-content-center">   
+        <div class="row d-flex justify-content-center align-items-center my-4 w-100">
+            <div class="col-8">
+                <h3 class="text-center my-2 text-info" id="tournamentTitleScore"></h3>
+                <table class="table table-borderless bg-dark text-white table-striped  boder border-4 border-bottom-0 border-info border-end border-start border-top-0" id="tableScore">
+                    <thead class="text-center">
+                        <tr>
+                            <th></th>
+                            <th>Players</th>
+                            <th>Sets</th>
+                            <th>Points</th>
+                        </tr>
+
+                    </thead>
+                    <tbody class="text-center">
+                          
+                            <tr class="trOne g-3">
+
+                                    <td style="color: #fff"><img src="./img/flagDefault.jpg" width="20" height="20" class="rounded" alt="flag country" id="flagsPlayerOneInLine"></td>
+                                    <td class="tdPlayer"> <span id="playerOneScorePoints"></span>
+                                        <span id="iconballP1" class="fas fa-circle"></span>
+                                    </td>
+                                    <td class="fs-2 bg-info text-white" id="setPlayerOneInLine">0</td>
+                                    <td class="points" id="pointsPlayerOneInLine">0
+                                       
+                                    </td>
+                                    
+                                </div>
+                            </tr>
+                            <tr>
+                                <td><img src="./img/flagDefault.jpg" width="20" height="20" class="rounded" alt="flag country" id="flagsPlayerTwoInLine">
+                                
+                                </td>
+                                <td class="tdPlayer"> <span id="playerTwoScorePoints"></span>
+                                    <span id="iconballP2" class="fas fa-circle"></span>
+                                </td>
+                                <td class="fs-2 bg-info" id="setPlayerTwoInLine">0</td>
+                                <td class="points" id="pointsPlayerTwoInLine">0
+                                    
+                                
+                                </td>
+                            </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-6 my-2 tableScore" id="tableScoreView">
+                <table class="table bg-dark table-striped table-bordered text-white">
+                    <thead class="text-center">
+                        <tr>
+                            <th>#</th>
+                            <th>Players</th>
+                            <th>1</th>
+                            <th>2</th>
+                            <th>3</th>
+                            <th>4</th>
+                            <th>5</th>
+                            <th class="hide2">Set6</th>
+                            <th class="hide2">Set7</th>
+                            <th>SETS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                           <tr class="text-center text-white">
+                            <td>1</td>
+                                <td>
+                                    <img src="./img/flagDefault.jpg" width="20" height="20" class="rounded" alt="flag country" id="tableScorePlayerOne">
+                                    <span id="playerOneScoreInLine"></span>
+                                </td>
+                                <td id="tableScore1P1">0</td>
+                                <td id="tableScore2P1">0</td>
+                                <td id="tableScore3P1">0</td>
+                                <td id="tableScore4P1">0</td>
+                                <td id="tableScore5P1">0</td>
+                                <td id="tableScore6P1">0</td>
+                                <td id="tableScore7P1">0</td>
+                                <td id="setsResumePlayer1">0</td>
+                          </tr>
+                           <tr class="text-center">
+                            <td>2</td>
+                                <td>
+                                    <img src="./img/flagDefault.jpg" width="20" height="20" class="rounded" alt="flag country" id="tableScorePlayerTwo">
+                                    <span id="playerTwoScoreInLine"></span>
+                                </td>
+                                <td id="tableScore1P2">0</td>
+                                <td id="tableScore2P2">0</td>
+                                <td id="tableScore3P2">0</td>
+                                <td id="tableScore4P2">0</td>
+                                <td id="tableScore5P2">0</td>
+                                <td id="tableScore6P2">0</td>
+                                <td id="tableScore7P2">0</td>
+                                <td id="setsResumePlayer2">0</td>
+                            </tr>                
+                             
+                    </tbody>
+                </table>
+            </div>
+            
+        </div>
+    </div>
+    <script src=https://code.jquery.com/jquery-3.6.0.js></script>
+    <script src="./js/score.js"></script>
+
+</body>
+</html>

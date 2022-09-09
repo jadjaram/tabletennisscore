@@ -1,0 +1,73 @@
+body{
+    background: #333;
+    overflow: hidden;
+}
+
+.body-score.active{
+    background: #026502;
+}
+
+#tableScore tbody tr > td{
+    border: 2px solid #333;
+    height: 30px;
+    padding-left: 3px;
+}
+#tableScore{
+    padding-left: 40px;
+    margin-top: 20px;
+
+}
+
+#btn1{
+    background-color: #026502;
+    border: none;
+}
+
+.fa-circle{
+    background: #026502;
+}
+.container-fluid{
+    height: 100vh !important;
+}
+
+
+.tdPlayer{
+
+    font-size: 1.2rem;
+    color: #fff;
+}
+
+
+/* .tdSets{
+    background-color: orange !important;
+    color:#fff;
+    font-size: 1.5rem;
+} */
+
+.points{
+
+    font-size: 2rem;
+    color: #fff;
+}
+
+.tableScore{
+    display: flex;
+}
+
+#tableScoreView{
+    transition: .4s all;
+}
+#tableScoreView{
+    visibility: hidden;
+    opacity: 0;
+}
+
+#iconballP1, #iconballP2{
+
+    background: none;
+    color: orange;
+    position: absolute;
+    left: 480px;
+    opacity: 0;
+    transition: .6s all;
+}
