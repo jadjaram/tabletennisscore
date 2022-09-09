@@ -456,7 +456,8 @@ function readDataLocal(){
           $('td:nth-child(7)').toggle();
           $('td:nth-child(8)').toggle();
         } 
-
+            
+        select_id('id-round').innerHTML = data.round
       }
 
 
