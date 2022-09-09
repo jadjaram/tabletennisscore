@@ -38,7 +38,7 @@ function getPlayerStorage(){
 
     if(data){
 
-        select_id('tournamentTitleScore').innerHTML = data.title
+        select_id('tournamentTitleScore').innerHTML = data.title + " " + data.category
 
         if(data.modality === "individual"){
             select_id('playerOneScorePoints').innerHTML = data.players[0]
