@@ -272,6 +272,7 @@ function readDataLocal(){
         select_id("initialService2").disabled = false;
         select_id('GiroScore').disabled = false
         select_id('view_match').style.pointerEvents = 'visible'
+        select_id('id-round').innerHTML = result.data.round
 
 
           if(result.data.modality === "dobles"){
@@ -459,7 +460,7 @@ function readDataLocal(){
           $('td:nth-child(8)').toggle();
         } 
             
-        select_id('id-round').innerHTML = data.round
+        
       }
 
 
