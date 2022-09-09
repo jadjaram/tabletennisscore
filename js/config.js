@@ -133,11 +133,6 @@ function validateCheckInd(){
   }
 
    
-    // select_id("saveData").onclick = ()=>{
-
-    // }
-
-
 function saveInfoMatch(){
   
   var player1 =  select_id('modalInputPlayer1').value
@@ -450,9 +445,6 @@ function readDataLocal(){
           select_id("setPlayer2").value  = result.data.Sets.player2.countSets
         }
 
-        // if(result.data.sumSets > 1){
-        //   giro()
-        // }
         
         if(result.data.bestOf === "5" ){
           $(".hide2").toggle();
