@@ -230,10 +230,9 @@ function saveInfoMatch(){
     }
   }
 
-  // select_id("initialService1").disabled = false;
-  // select_id("initialService2").disabled = false;
+
   saveLocalStorage("matchActual", dataSaveLocal)
-  window.open('https://jadjaram.github.io/tabletennisscore/escore.html')
+  //window.open('https://jadjaram.github.io/tabletennisscore/escore.html')
 }
 
 function saveLocalStorage(key,data){
