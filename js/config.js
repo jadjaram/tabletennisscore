@@ -453,8 +453,8 @@ function readDataLocal(){
         
         if(result.data.bestOf === "5" ){
           $(".hide2").toggle();
+          $('td:nth-child(7)').toggle();
           $('td:nth-child(8)').toggle();
-          $('td:nth-child(9)').toggle();
         } 
 
       }
