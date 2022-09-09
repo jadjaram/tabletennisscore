@@ -89,9 +89,9 @@ function readDataStorage(){
         readStorage()
         counterTime ++;
         //console.log(counterTime);
-        if(counterTime === 30){
+        if(counterTime === 20){
             takeTime = counterTime
-            if(takeTime === 30){
+            if(takeTime === 20){
                 showTable()
             }
         }
@@ -188,15 +188,15 @@ function showTable(){
     let count = 0;
     timeInterval = setInterval(() => {
         count ++;
-        console.log(count);
         select_id('tableScoreView').style.visibility = 'visible'
         select_id('tableScoreView').style.opacity = 1
 
-        if(count === 30){
+        if(count === 20){
             clearInterval(timeInterval)
             select_id('tableScoreView').style.visibility = 'hidden'
             select_id('tableScoreView').style.opacity = 0
             count = 0;
+            location.reload()
         }
         
     }, 1000);
