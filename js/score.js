@@ -15,15 +15,22 @@ function getPlayerStorage(){
     const dataLocal =  localStorage.getItem("matchActual")//Storage
     const data = JSON.parse(dataLocal)
 
-    const doublesOne = data.PlayerDoubles[0]
-    const doublesTwo = data.PlayerDoubles[1]
-    const newDoublesOne = doublesOne.split(" ")
-    const newDoublesTwo = doublesTwo.split(" ")
+    const doublesOne = ""
+    const doublesTwo = ""
+    const newDoublesOne = ""
+    const newDoublesTwo = ""
+    if(data){
+
+         doublesOne = data.PlayerDoubles[0]
+         doublesTwo = data.PlayerDoubles[1]
+         newDoublesOne = doublesOne.split(" ")
+         newDoublesTwo = doublesTwo.split(" ")
+    }
 
     if(data.bestOf === "5" ){
         $(".hide2").toggle();
+        $('td:nth-child(7)').toggle();
         $('td:nth-child(8)').toggle();
-        $('td:nth-child(9)').toggle();
   } 
 
     if(data){
