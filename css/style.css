@@ -19,13 +19,10 @@ body{
 }
 
 #btn1{
-    background-color: #026502;
     border: none;
 }
 
-.fa-circle{
-    background: #026502;
-}
+
 .container-fluid{
     height: 100vh !important;
 }
@@ -65,9 +62,12 @@ body{
 #iconballP1, #iconballP2{
 
     background: none;
-    color: orange;
-    position: absolute;
-    left: 480px;
-    opacity: 0;
+    color: orange !important;
+    /* position: absolute;
+    left: 680px;
+    top: 380px; */
+    padding-left: 20px;
+    visibility: hidden;
+    opacity:  0;
     transition: .6s all;
 }
