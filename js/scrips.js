@@ -5,7 +5,6 @@ let runningTime = 0;
 let t = 0;
 let counter = 0;
 let whiteCard = 0;
-let alternator = 0;
 let valueP1 = 0;
 let valueP2 = 0;
 let SetPlayer1 = 0
@@ -16,21 +15,48 @@ let discount = 0;
 var ServicePlayerActive = 0
 let stateSet;
 let indicador = 0
+let alternator;
 
+const res =  JSON.parse(localStorage.getItem("matchActual"))//Storage
 
-select_id("BtnPlusPlayer2").disabled = true;
-select_id("BtnPlusPlayer1").disabled = true;
-select_id('modalCardsPlayerOne').disabled = true;
-select_id('modalCardsPlayerTwo').disabled = true;
-select_id('timePlayerOne').disabled = true;
-select_id('timePlayerTwo').disabled = true;
-select_id("initialService1").disabled = true;
-select_id("initialService2").disabled = true;
-select_id('finalMatch').disabled = true
-select_id('warmUp').disabled = true
-select_id('EndSet').disabled = true
-select_id('GiroScore').disabled = true
-select_id('view_match').style.pointerEvents = 'none'
+ if(res){
+    
+    alternator =  res.alternator || 0
+
+    if(res.InitialService.player1 === false && res.InitialService.player2 === false){
+        select_id("BtnPlusPlayer2").disabled = true;
+        select_id("BtnPlusPlayer1").disabled = true;
+        select_id('modalCardsPlayerOne').disabled = true;
+        select_id('modalCardsPlayerTwo').disabled = true;
+        select_id('timePlayerOne').disabled = true;
+        select_id('timePlayerTwo').disabled = true;
+        select_id("initialService1").disabled = true;
+        select_id("initialService2").disabled = true;
+        select_id('finalMatch').disabled = true
+        select_id('warmUp').disabled = true
+        select_id('EndSet').disabled = true
+        select_id('GiroScore').disabled = true
+        select_id('view_match').style.pointerEvents = 'none'
+    }
+
+}
+
+if(!res){
+    select_id("BtnPlusPlayer2").disabled = true;
+    select_id("BtnPlusPlayer1").disabled = true;
+    select_id('modalCardsPlayerOne').disabled = true;
+    select_id('modalCardsPlayerTwo').disabled = true;
+    select_id('timePlayerOne').disabled = true;
+    select_id('timePlayerTwo').disabled = true;
+    select_id("initialService1").disabled = true;
+    select_id("initialService2").disabled = true;
+    select_id('finalMatch').disabled = true
+    select_id('warmUp').disabled = true
+    select_id('EndSet').disabled = true
+    select_id('GiroScore').disabled = true
+    select_id('view_match').style.pointerEvents = 'none'
+ 
+}
 
 select_id('play-pause').onclick = ()=> {playPause()}
 select_id('stop').onclick = ()=> {stop()}
@@ -148,6 +174,8 @@ const calculateTime = runningTime => {
         valueP1 = valueP1 + 1 
         select_id('player1').value = valueP1
         alternator ++;
+        result.data.alternator = alternator
+        localStorage.setItem("matchActual", JSON.stringify(result.data))
     if(valueP2 <= 9 && valueP1 > 10){
         
         saveScoreInLineOne(valueP1, 1);
@@ -161,6 +189,8 @@ const calculateTime = runningTime => {
          return
     
     }else{
+
+        
 
         select_id('player1').value = valueP1 
         if(alternator === 2){
@@ -198,7 +228,7 @@ const calculateTime = runningTime => {
                    
                 }
     }
-            
+   
   }
 
   function sumScoreP2(){
@@ -211,6 +241,8 @@ const calculateTime = runningTime => {
         valueP2 = valueP2 + 1 
         select_id('player2').value = valueP2
         alternator ++;
+        result.data.alternator = alternator
+        localStorage.setItem("matchActual", JSON.stringify(result.data))
     if(valueP1 <= 9 && valueP2 > 10){
         
         saveScoreInLineTwo(valueP2, 1);
@@ -261,7 +293,7 @@ const calculateTime = runningTime => {
                     
                 }
     }
-            
+        
   }
   
             
@@ -289,6 +321,8 @@ function resScoreP1(){
         if(indicador === 1){
             serviceMatch()
             alternator =  1
+            result.data.alternator = alternator
+            localStorage.setItem("matchActual", JSON.stringify(result.data))
         }
 
         if(indicador === 2){
@@ -321,7 +355,7 @@ function resScoreP1(){
         select_id('player1').value = valueP1 
         saveScoreInLineOne(valueP1, 0);       
         
-            
+        
   }
 
   function resScoreP2(){
@@ -346,6 +380,8 @@ if(valueP2 < 1){
     if(indicador === 1){
         serviceMatch()
         alternator =  1
+        result.data.alternator = alternator
+        localStorage.setItem("matchActual", JSON.stringify(result.data))
     }
 
     if(indicador === 2){
@@ -391,11 +427,12 @@ if(valueP2 < 1){
 
 // CONTROLS SERVICE
 function serviceMatch(){
-    
+    const result =  getDataLocalStorage()
     discount = counterReduce
     counterReduce = 0;
     alternator = 0;
-    const result =  getDataLocalStorage()
+   
+    result.data.alternator = alternator
 
     if(result.data.InitialService.player1 === true){
         select_id('serviceTwo').classList.add('active')
@@ -468,9 +505,17 @@ function changeService(){
 
     select_id('redCardModalP2').onclick = ()=> {
     select_id('redPlayerTwo').classList.add('cardRed')
-    //setCardPlayer("player2", "redCardModal")
+    setCardPlayer("player2", "redCardModal")
 
     }
+
+    document.querySelectorAll('.cardsPlayer').forEach(element =>{
+
+        element.addEventListener('click', e => {
+            const id = e.target.getAttribute('id')
+            deleteCardPlayer(id)
+        })
+    })
   
 // SERVICE INITIAL
   select_id('initialService1').onclick = ()=>{
@@ -672,7 +717,7 @@ function giro(){
           if (!form.checkValidity()) {
             event.preventDefault()
             event.stopPropagation()
-            console.log(forms);
+            
           }else{
             saveInfoMatch()
           }
@@ -683,7 +728,14 @@ function giro(){
       })
   })()
 
+select_id('btnService').onclick = ()=>{
+    serviceMatch()
+}
 
+select_id('view_match').onclick = ()=>{
+
+    window.open('escore.html')
+}
             
                             // if(valueP1 === 10 && setsForMatch === "5" && parseInt(select_id("setPlayer1").value) === 2 && valueP2 < 10 ){
                             //     select_id('set-point1').classList.add('active')
