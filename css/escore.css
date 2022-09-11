@@ -9,6 +9,7 @@ body{
     background: #222;
     /* background: url("../img/table-Tennis-found.jpg") no-repeat center center/cover; */
     font-size: 14px !important;
+    overflow: hidden;
 }
  
 .table-match{
@@ -42,7 +43,7 @@ body{
     /* background:rgba(0,0,0,0.8); */
     text-align: center;
     color: #fafafa;
-    width: 80%;
+    width:60%;
     font-size: 4rem;
     border-radius: 150px !important;
     box-shadow: -15px -15px 15px var(--shadowLg),
@@ -94,8 +95,7 @@ body{
 .content-info-player{
   width: 100%;
   height: 100%;
-  display: flex;
-  justify-content: space-around;
+
 
   
 }
@@ -148,14 +148,17 @@ text-align: center;
     color: #444;
     font-weight: bold;
     display: none;
+   
   }
 
   .cardsPlayer:nth-child(1){
     background-color: white;
+    
   }
 
   .cardsPlayer:nth-child(2){
     background-color: yellow;
+    
   }
 
   .cardsPlayer:nth-child(3){
@@ -185,7 +188,9 @@ text-align: center;
      display: flex;
   }
 
- 
+  #timerPlayerOne, #YellowPlayerOne, #doubleYellowP1, #redPlayerOne, #timerPlayerTwo, #YellowPlayerTwo, #playerTwoDoubleYellowCard, #redPlayerTwo{
+    cursor: pointer;
+  }
 
 .btn-plus{
     font-size: 3.5rem;
