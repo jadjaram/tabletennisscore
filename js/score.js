@@ -2,6 +2,7 @@ let sum = 0;
 let counterTime = 0;
 let timeInterval;
 let takeTime;
+let runIntervalShow;
 getPlayerStorage()
 readDataStorage()
 
@@ -78,7 +79,18 @@ function getPlayerStorage(){
             select_id('tableScorePlayerOne').src = data.flagsDoubles[0]
             select_id('tableScorePlayerTwo').src = data.flagsDoubles[1]
         }
+        select_id('btn1').style.display = "block"
+        select_id('btn2').style.display = "block"
 
+    }else{
+
+        clearInterval(runIntervalShow);
+        const html = `<div><h1 class="fs-1 text-white fw-bold>Programación en curso...</h1></div>`
+        select_id('view__points').innerHTML += '<div><h1 class="fs-1 text-white  text-center fw-bold">Programación... en curso</h1></div>';
+        select_id('tableScoreView').style.display = "none"
+        select_id('tableScore').style.display =  'none'
+        select_id('btn1').style.display = "none"
+        select_id('btn2').style.display = "none"
     }
 
     
@@ -86,7 +98,7 @@ function getPlayerStorage(){
 
 function readDataStorage(){
 
-    setInterval(()=>{
+    runIntervalShow =  setInterval(()=>{
         readStorage()
         counterTime ++;
         //console.log(counterTime);
@@ -117,17 +129,23 @@ function readStorage(){
             
             if(data.InitialService.player1 ===  true){
 
-                select_id('iconballP1').style.opacity = 1
-                select_id('iconballP2').style.opacity = 0
+                select_id('iconBallP1').style.opacity = 1
+                select_id('iconBallP1').style.visibility = 'visible'
+                select_id('iconBallP2').style.opacity = 0
+                select_id('iconBallP2').style.visibility = 'hidden'
 
             }else if(data.InitialService.player2 ===  true){
 
-                select_id('iconballP2').style.opacity = 1
-                select_id('iconballP1').style.opacity = 0
+                select_id('iconBallP2').style.opacity = 1
+                select_id('iconBallP2').style.visibility = 'visible'
+                select_id('iconBallP1').style.opacity = 0
+                select_id('iconBallP1').style.visibility = 'hidden'
                 
             }else if (data.InitialService.player1 ===  false && data.InitialService.player1 === false ){
-                select_id('iconballP2').style.opacity = 0
-                select_id('iconballP1').style.opacity = 0
+                select_id('iconBallP2').style.opacity = 0
+                select_id('iconBallP1').style.opacity = 0
+                select_id('iconBallP1').style.visibility = 'hidden'
+                select_id('iconBallP2').style.visibility = 'hidden'
             }
             
         }else if(data.sumSets === 1){
@@ -172,6 +190,9 @@ function readStorage(){
         select_id('setsResumePlayer1').innerHTML = data.Sets.player1.countSets
         select_id('setsResumePlayer2').innerHTML = data.Sets.player2.countSets
 
+    }else{
+
+        location.reload()
     }
   
 }
@@ -180,7 +201,14 @@ select_id('btn1').onclick = ()=>{
 
     select_id('body-score').classList.toggle('active')
     select_id('tournamentTitleScore').classList.toggle('text-white')
+    select_id('round').classList.toggle('text-white')
+    select_id('btn1Icon').classList.toggle('text-success')
+    select_id('btn1Icon').classList.toggle('text-dark')
+
 }
+
+select_id('btn2').onclick = ()=>{showManualTable()}
+
 
 
 
@@ -197,7 +225,7 @@ function showTable(){
             select_id('tableScoreView').style.visibility = 'hidden'
             select_id('tableScoreView').style.opacity = 0
             count = 0;
-            location.reload()
+            
         }
         
     }, 1000);
@@ -207,6 +235,12 @@ function showTable(){
 
 }
 
+function showManualTable(){
 
+    select_id('tableScoreView').style.visibility = 'visible'
+    select_id('tableScoreView').style.opacity = 1
+    showTable()
+
+}
 
 
