@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VoltaMedia</title>
-    <link href=//cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css rel="stylesheet">
+    <link href=https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css rel="stylesheet">
     <link rel="stylesheet" href="css/escore.css">
     <link rel="stylesheet" href="css/cronometro.css">
     <script src=//kit.fontawesome.com/af551db88b.js crossorigin="anonymous"></script>
@@ -16,25 +16,25 @@
 
     <div class="container-fluid">
         <div class="row d-flex justify-content-center">
-             <!-- controls time sets and card player 2 -->
-                <div class="col-4 my-4 d-flex justify-content-center flex-column box-inputPlayer" id="box-player1">
-                    <div class="d-flex justify-content-center w-100 contentInputPlayer">
+             <!-- controls time sets and card player 1 -->
+                <div class="col-sm-12 col-md-3 col-lg-4 col-xl-4 my-4 d-flex flex-sm-column justify-content-center flex-column justify-content-sm-evenly box-inputPlayer" id="box-player1">
+                    <div class="d-flex g-2 justify-content-center w-100 contentInputPlayer">
                         <input class="inputPlayer rounded-2 bg-dark" type="text" value="0" name="player1" id="player1" disabled>
                         <div class="" id="set-point1"></div>
                     </div>
                     <h4 class="text-center my-2 text-light">Sets</h4>
-                    <div class="d-flex justify-content-center w-100">
+                    <div class="d-flex justify-content-center">
                         <input type="text" name="setPlayer1" id="setPlayer1"  value="0" class="inputSets" disabled>
                     </div>
-                    <div class="d-flex justify-content-between  box-btn">
-                        <button class="btn btn-warning my-1 text-dark fw-bold" data-bs-toggle="modal" data-bs-target="#modalCards" id="modalCardsPlayerOne"><i class="fas fa-clone"></i> Cards</button>
+                    <div class="d-flex justify-content-evenly  box-btn">
+                        <button class="btn btn-warning btn-sm my-1 text-dark fw-bold" data-bs-toggle="modal" data-bs-target="#modalCards" id="modalCardsPlayerOne"><i class="fas fa-clone"></i> Cards</button>
                         <button class="btn btn-success my-2" id="initialService1"><i class="fas fa-table-tennis"></i></button>
-                        <button class="btn btn-light my-1 text-dark fw-bold timer" data-bs-toggle="modal" data-bs-target="#ModalTW" id="timePlayerOne"><i class="fas fa-history"></i> Tiempo</button>
+                        <button class="btn btn-light btn-sm my-1 text-dark fw-bold timer" id="timePlayerOne" data-bs-toggle="modal" data-bs-target="#ModalTW"><i class="fas fa-history"></i> Time</button>
 
                     </div>
                 </div>
                 <!-- table-tennis -->
-            <div class="col-4 my-4" id="table-grid">
+            <div class="col-sm-12 col-md-3 col-lg-4 col-xl-4 my-4" id="table-grid">
                 <div class="border-primary w-100 border-4 border bg-dark table-match" style="height: 250px">             
                     <span class="text-white horizontal"></span>
                     <span class="text-white vertical"></span>
@@ -42,7 +42,7 @@
                         <!-- view player2 cards on table -->
                     <div class="content-player1" id="table-p1">
 
-                        <div class="content-info-player" id="box-info-player1">
+                        <div class="content-info-player d-flex justify-content-evenly" id="box-info-player1">
                             <span class="flag-player1" id="spanImgP1"><img src="" width="20" height="20" class="rounded flag_player1" id="flag_player1" alt="flag country"></span>
                             <input type="text" class="inputPlayerTable" name="inputPlayer1" id="inputPlayer1" value="" disabled>
                             <span class="player1 text-light"><i id="serviceOne" class="fas fa-table-tennis iconService"></i></span>
@@ -56,7 +56,7 @@
                     </div>
                        <!-- view player2 cards on table -->
                     <div class="content-player2" id="table-p2">
-                        <div class="content-info-player">
+                        <div class="content-info-player d-flex justify-content-evenly">
                             <span class="flag-player2"><img src="" width="20" height="20" class="rounded flag_player2" id="flag_player2"></span>
                             <input type="text" class="inputPlayerTable" name="inputPlayer2" id="inputPlayer2" value="" disabled>
                             <span class="player2 text-light"><i id="serviceTwo" class="fas fa-table-tennis iconService"></i></span>
@@ -72,20 +72,20 @@
                 </div>
             </div>       
             <!-- controls time sets and card player 2 -->
-            <div class="col-4 my-4 d-flex justify-content-center flex-column rounded-2 box-inputPlayer" id="box-player2">
+            <div class="col-sm-12 col-md-3 col-lg-4 col-xl-4 my-4 d-flex justify-content-center flex-column rounded-2 box-inputPlayer" id="box-player2">
                 <div class="d-flex justify-content-center w-100 contentInputPlayer">
                     <input class="inputPlayer rounded-2 bg-dark" type="text" value="0" name="player2" id="player2" disabled>
                         <div class="" id="set-point2"></div>
      
                 </div>
                     <h4 class="text-center my-2 text-light">Sets</h4>
-                    <div class="d-flex justify-content-center w-100">
+                    <div class="d-flex justify-content-center ">
                         <input type="text" name="setPlayer2" id="setPlayer2" value="0" class="inputSets" disabled>
                     </div>
-                    <div class="d-flex justify-content-between box-btn">
-                        <button class="btn btn-light my-1 text-dark fw-bold timer" id="timePlayerTwo" data-bs-toggle="modal" data-bs-target="#ModalTW"><i class="fas fa-history"></i> Tiempo</button>
+                    <div class="d-flex justify-content-evenly box-btn">
+                        <button class="btn btn-light btn-sm my-1 text-dark fw-bold timer" id="timePlayerTwo" data-bs-toggle="modal" data-bs-target="#ModalTW"><i class="fas fa-history"></i> Time</button>
                         <button class="btn btn-success my-2" id="initialService2"><i class="fas fa-table-tennis"></i></button>
-                        <button class="btn btn-warning my-1 text-dark fw-bold" data-bs-toggle="modal" data-bs-target="#modalCardsP2" id="modalCardsPlayerTwo"><i class="fas fa-clone"></i> Cards</button>
+                        <button class="btn btn-warning btn-sm my-1 text-dark fw-bold" data-bs-toggle="modal" data-bs-target="#modalCardsP2" id="modalCardsPlayerTwo"><i class="fas fa-clone"></i> Cards</button>
                     </div>
 
             </div>
@@ -108,7 +108,7 @@
         </div>
         <!-- table players resume -->
         <div class="row d-flex justify-content-center">
-            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-6 my-2" id="content-table">
+            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-6 my-1" id="content-table">
                       <div class="box-round text-warning fw-bold">
                         <h5 class="text-light fw-bold" id="id-round"></h5>
                        </div>
@@ -130,16 +130,16 @@
                            <tr class="text-center text-light">
                                 <td id="rowPlayer1">
                                      <img src="" width="20" height="20" class="rounded" id="resumePlayer1">
-                                      <span id="tableResumePlayer1"></span>  
+                                      <span class="text-white" id="tableResumePlayer1"></span>  
                                 </td>
-                                <td  id="tablaSet0P1">0</td>
-                                <td id="tablaSet1P1">0</td>
-                                <td id="tablaSet2P1">0</td>
-                                <td id="tablaSet3P1">0</td>
-                                <td id="tablaSet4P1">0</td>
-                                <td id="tablaSet5P1">0</td>
-                                <td id="tablaSet6P1">0</td>
-                                <td id="setsResumePlayer1">0</td>
+                                <td class="text-white" id="tablaSet0P1">0</td>
+                                <td class="text-white" id="tablaSet1P1">0</td>
+                                <td class="text-white" id="tablaSet2P1">0</td>
+                                <td class="text-white" id="tablaSet3P1">0</td>
+                                <td class="text-white" id="tablaSet4P1">0</td>
+                                <td class="text-white" id="tablaSet5P1">0</td>
+                                <td class="text-white" id="tablaSet6P1">0</td>
+                                <td class="text-white" id="setsResumePlayer1">0</td>
                           </tr>
                            <tr class="text-center">
                                 <td id="rowPlayer2">
@@ -165,12 +165,13 @@
         <!-- controls buttons -->
         <div class="row y d-flex justify-content-evenly">
             <div class="col-8 d-flex gap-4 justify-content-center">
-                <button class="btn btn-success btn-mid" id="GiroScore"><i class="fas fa-exchange-alt"></i> Girar</button>
-                <button class="btn btn-info btn-mid" data-bs-toggle="modal" data-bs-target="#modalConfig"><i class="fas fa-settings"></i> Configurar Match</button>
-                <button class="btn btn-danger" id="finalMatch"><i class="fas fa-times"></i> Final Match</button>
-                <button class="btn btn-light" id="warmUp" data-bs-toggle="modal" data-bs-target="#ModalTW"><i class="fas fa-temperature-high"></i> Calentamiento</button>
-                <a href="escore.html" target="_blank" id="view_match" class="btn btn-primary">Vista Match</a>
-                <button class="btn btn-warning" id="EndSet"><i class="fas fa-play"></i> Fin Set</button>
+                <button class="btn btn-secondary btn-sm text-white" id="btnService">Service</button>
+                <button class="btn btn-success btn-sm btn-mid" id="GiroScore"><i class="fas fa-exchange-alt"></i> Girar</button>
+                <button class="btn btn-info btn-sm btn-mid" data-bs-toggle="modal" data-bs-target="#modalConfig"><i class="fas fa-settings"></i> Configurar Match</button>
+                <button class="btn btn-danger btn-sm" id="finalMatch"><i class="fas fa-times"></i> Final Match</button>
+                <button class="btn btn-light btn-sm" id="warmUp" data-bs-toggle="modal" data-bs-target="#ModalTW"><i class="fas fa-temperature-high"></i> Calentamiento</button>
+                <a href="#" id="view_match" class="btn btn-primary">Vista Match</a>
+                <button class="btn btn-warning btn-sm" id="EndSet"><i class="fas fa-play"></i> Fin Set</button>
             </div>
         </div>      
     </div>
@@ -303,13 +304,13 @@
                                     <div class="col-4">
                                         <div class="input-group input-group-sm">
     
-                                            <label class="input-group-text bg-primary text-white" for="inputGroupSelect01">Categoria</label>
+                                            <label class="input-group-text bg-primary text-white" for="inputGroupSelect01">Ronda</label>
                                             <select id="round" class="form-select" required>
                                                 <option value=""selected disabled >Seleccion...</option>
                                                 <option value="Grupos">Grupos</option>
                                                 <option value="Ronda 32">Ronda 32</option>
                                                 <option value="Ronda 16">Ronda 16</option>
-                                                <option value="Ronda 8">Ronda 8</option>
+                                                <option value="Octavos">Octavos</option>
                                                 <option value="Cuartos">Cuartos</option>
                                                 <option value="Semifinal">Semifinal</option>
                                                 <option value="Final">Final</option>
@@ -341,14 +342,14 @@
                                       <div class="form-check form-switch mx-3">
                                             <input class="form-check-input" type="checkbox" value="5" id="bestOfThree" checked>
                                             <label class="form-check-label fw-bold" for="bestOfThree">
-                                            Mejor de 3 Sets
+                                            Mejor de 5 Sets
                                             </label>
                                       </div>
                         
                                       <div class="form-check form-switch mx-3">
                                             <input class="form-check-input" type="checkbox" value="7" id="bestOfFour">
                                             <label class="form-check-label fw-bold" for="bestOfFour">
-                                                Mejor de 4 Sets
+                                                Mejor de 7 Sets
                                             </label>
                                       </div>
 
@@ -362,7 +363,7 @@
 
                                             <div class="input-group-sm">
                                                 <label for="modalInputPlayer1" class="form-label fw-bold">Jugador 1</label>
-                                                <input type="text" class="form-control" id="modalInputPlayer1" placeholder="nombre y Apellido" required>
+                                                <input type="text" class="form-control" id="modalInputPlayer1" placeholder="nombre y Apellido">
                                                 <div class="valid-feedback">!ok</div>
                                                 <div class="invalid-feedback">!Campo Requerido</div>
                                             </div>
@@ -391,7 +392,7 @@
                                             <div class="input-group-sm">
                         
                                                 <label for="modalInputPlayer2" class="form-label fw-bold">Jugador 2</label>
-                                                <input type="text" class="form-control" id="modalInputPlayer2" placeholder="nombre y Apellido" required>
+                                                <input type="text" class="form-control" id="modalInputPlayer2" placeholder="nombre y Apellido">
                                                 <div class="valid-feedback">!ok</div>
                                                 <div class="invalid-feedback">!Campo Requerido</div>
                                             </div>
@@ -419,8 +420,8 @@
                                                     <label for="modalInputPlayer2" class="form-label fw-bold">Pareja 1</label>
                                                     <div class="input-group input-group-sm">
                                                         <!-- <span class="input-group-text">First and last name</span> -->
-                                                        <input type="text" aria-label="Player1A_doubles" class="form-control" id="Player1A_doubles" placeholder="nombre y Apellido">
-                                                        <input type="text" aria-label="Player1B_doubles" class="form-control" id="Player1B_doubles" placeholder="nombre y Apellido">
+                                                        <input type="text" aria-label="Player1A_doubles" class="form-control" id="Player1A_doubles" placeholder="nombre y Apellido" value="">
+                                                        <input type="text" aria-label="Player1B_doubles" class="form-control" id="Player1B_doubles" placeholder="nombre y Apellido" value="">
    
                                                     </div>
                                             </div>
@@ -442,8 +443,8 @@
                                             <label for="modalInputPlayer2" class="form-label fw-bold">Pareja 2</label>
                                             <div class="input-group input-group-sm">
                                                 <!-- <span class="input-group-text">First and last name</span> -->
-                                                <input type="text" id="Player2A_doubles" aria-label="Player2A_doubles" class="form-control" placeholder="nombre y Apellido">
-                                                <input type="text" id="Player2B_doubles" aria-label="Player2B_doubles" class="form-control" placeholder="nombre y Apellido">
+                                                <input type="text" id="Player2A_doubles" aria-label="Player2A_doubles" class="form-control" placeholder="nombre y Apellido" value="">
+                                                <input type="text" id="Player2B_doubles" aria-label="Player2B_doubles" class="form-control" placeholder="nombre y Apellido" value="">
                                                
                                               </div>
                                         </div>
@@ -458,9 +459,10 @@
                                               </div>
                                         </div>
                                     </div>
-1                                </div>
+                                   </div>
                                 <div class="modal-footer d-flex justify-content-evenly">
                                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                                    <button class="btn btn-warning" type="button" id="editConfig">Editar</button>
                                     <button type="submit" class="btn btn-primary" id="saveData">Guardar</button>
                                     </div>
                             </form>
