@@ -14,21 +14,28 @@ var modoDoubles = select_id('modoDobles')
 var modoIndividual = select_id('modoIndividual')
 var bestOfThree = select_id('bestOfThree')
 var bestOfFour = select_id('bestOfFour')
+var modo;
 
-modoDoubles.addEventListener('change', validateCheck, false)
+modoDoubles.addEventListener('change', validateCheck, false)-
 modoIndividual.addEventListener('change', validateCheckInd, false)
 bestOfFour.addEventListener('change', validateSetInGame,false)
 bestOfThree.addEventListener('change', validateSetIn,false)
+
+
 
 getPaises();
 getDataLocalStorage()
 readDataLocal();
 CountSet()
 
+select_id('editConfig').onclick = ()=> saveChangeConfig()
+
+
 function validateSetInGame(){
   var checked = bestOfFour.checked
   if(checked){
     bestOfThree.checked = false
+    
   }
 }
 
@@ -39,12 +46,22 @@ function validateSetIn(){
   }
 }
 
+select_id('modalInputPlayer1').required = true
+select_id('modalInputPlayer2').required = true
+
 function validateCheck(){
 
   var checked = modoDoubles.checked
   if(checked){
     select_id('box-individual').style.display = 'none'
     select_id('box-dobles').style.display = 'block'
+    select_id('modalInputPlayer1').required = false
+    select_id('modalInputPlayer2').required = false
+    select_id('Player1A_doubles').required = true
+    select_id('Player1B_doubles').required = true
+    select_id('Player2A_doubles').required = true
+    select_id('Player2B_doubles').required = true
+    
     modoIndividual.checked = false
   }
   
@@ -56,6 +73,12 @@ function validateCheckInd(){
   if(checked){
     select_id('box-individual').style.display = 'block'
     select_id('box-dobles').style.display = 'none'
+    select_id('modalInputPlayer1').required = true
+    select_id('modalInputPlayer2').required = true
+    select_id('Player1A_doubles').required = false
+    select_id('Player1B_doubles').required = false
+    select_id('Player2A_doubles').required = false
+    select_id('Player2B_doubles').required = false
     modoDoubles.checked = false
   }
 }
@@ -136,10 +159,10 @@ function validateCheckInd(){
 function saveInfoMatch(){
   
   var player1 =  select_id('modalInputPlayer1').value
-  var countryP1 =  select_id('pais').value
+  var countryP1 =  select_id('pais').value || select_id('pais3').value
   var flagP1 = select_id('imgNation').src
   var player2 =  select_id('modalInputPlayer2').value
-  var countryP2 =  select_id('pais2').value
+  var countryP2 =  select_id('pais2').value || select_id('pais4').value
   var flagP2 = select_id('imgNation2').src
   var title = select_id('TournamentTitle').value
   var category = select_id('category').value
@@ -151,7 +174,6 @@ function saveInfoMatch(){
   var player2BDouble = select_id('Player2B_doubles').value
   var flag_doubleOne = select_id('imgNation3').src
   var flag_doubleTwo = select_id('imgNation4').src
-  var modo;
   var numberSets = ""
   var checkedIndividual = modoIndividual.checked
   var checkedDoubles = modoDoubles.checked
@@ -159,10 +181,17 @@ function saveInfoMatch(){
   var checkedThree = bestOfThree.checked
 
   if(checkedIndividual){
+    select_id('modalInputPlayer1').required = true
+    select_id('modalInputPlayer2').required = true
+    select_id('Player1A_doubles').required = false
+    select_id('Player1B_doubles').required = false
+    select_id('Player2A_doubles').required = false
+    select_id('Player2B_doubles').required = false
      modo = modoIndividual.value
   }
 
   if(checkedDoubles){
+
     modo = modoDoubles.value
  }
 
@@ -181,12 +210,13 @@ function saveInfoMatch(){
   dataSaveLocal.bestOf = numberSets
   dataSaveLocal.round = round
   dataSaveLocal.modality = modo
-  dataSaveLocal.PlayerDoubles = [player1ADouble + " / " + player1BDouble, player2ADouble + " / " +            player2BDouble]
+  dataSaveLocal.PlayerDoubles = [player1ADouble + " / " + player1BDouble, player2ADouble + " / " + player2BDouble]
   dataSaveLocal.flagsDoubles = [flag_doubleOne, flag_doubleTwo]
   dataSaveLocal.players = [player1, player2]
   dataSaveLocal.country = [countryP1, countryP2]
   dataSaveLocal.flags = [flagP1, flagP2]
   dataSaveLocal.sumSets = 0
+  dataSaveLocal.alternator = 0
   dataSaveLocal.service = {
     servicePlayer1:false,
     servicePlayer2:false
@@ -792,6 +822,126 @@ function saveMatchFinal(){
 
 }
 
+function deleteCardPlayer(id){
+  const result = getDataLocalStorage()
 
+  if(id === 'YellowPlayerOne'){
+    result.data.cards.player1.yellowCard = false
+    select_id('YellowPlayerOne').classList.remove('cardYellow')
+  }
+
+  if(id === 'doubleYellowP1'){
+    result.data.cards.player1.doubleYellow = false
+    select_id('doubleYellowP1').classList.remove('cardDoubleYellow')
+  }
+
+  if(id === 'redPlayerOne'){
+    result.data.cards.player1.redCard = false
+    select_id('redPlayerOne').classList.remove('cardRed')
+  }
+
+  if(id === 'YellowPlayerTwo'){
+    result.data.cards.player2.yellowCard = false
+    select_id('YellowPlayerTwo').classList.remove('cardYellow')
+  }
+
+  if(id === 'playerTwoDoubleYellowCard'){
+    result.data.cards.player2.doubleYellow = false
+    select_id('playerTwoDoubleYellowCard').classList.remove('cardDoubleYellow')
+  }
+
+  if(id === 'redPlayerTwo'){
+    result.data.cards.player2.redCard = false
+    select_id('redPlayerTwo').classList.remove('cardRed')
+  }
+
+  localStorage.setItem("matchActual", JSON.stringify(result.data))
+
+}
+
+function saveChangeConfig(){
+
+  const result = getDataLocalStorage()
+
+  if(result){
+
+    var check = modoIndividual.checked
+
+    if(result.data.bestOf === "7"){
+      bestOfThree.checked = false
+      bestOfFour.checked = true
+    }else{
+      bestOfThree.checked = true
+      bestOfFour.checked = false
+    }
+    
+
+    if(result.data.modality === "individual"){
+      modoIndividual.checked = true
+      modoDoubles.checked = false
+      select_id('box-individual').style.display = 'block'
+      select_id('box-dobles').style.display = 'none'
+
+      if(check){
+
+        select_id('modalInputPlayer1').required = true
+        select_id('modalInputPlayer2').required = true
+        select_id('Player1A_doubles').required = false
+        select_id('Player1B_doubles').required = false
+        select_id('Player2A_doubles').required = false
+        select_id('Player2B_doubles').required = false
+
+        select_id('modalInputPlayer1').value = result.data.players[0]
+        select_id('modalInputPlayer2').value = result.data.players[1]
+        select_id('pais').value = result.data.country[0]
+        select_id('pais2').value = result.data.country[1]
+        select_id('imgNation').src = result.data.flags[0]
+        select_id('imgNation2').src = result.data.flags[1]
+      }
+    
+    }
+
+    if(result.data.modality === 'dobles'){
+
+      modoDoubles.checked = true
+      modoIndividual.checked = false
+
+      select_id('modalInputPlayer1').required = false
+      select_id('modalInputPlayer2').required = false
+      select_id('Player1A_doubles').required = true
+      select_id('Player1B_doubles').required = true
+      select_id('Player2A_doubles').required = true
+      select_id('Player2B_doubles').required = true
+
+      select_id('box-individual').style.display = 'none'
+      select_id('box-dobles').style.display = 'block'
+
+
+        const doublesOne = result.data.PlayerDoubles[0]
+        const doublesTwo = result.data.PlayerDoubles[1]
+         newDoublesOne = doublesOne.split(" ")
+         newDoublesTwo = doublesTwo.split(" ")
+
+        select_id('Player1A_doubles').value = newDoublesOne[0] + " " + newDoublesOne[1]
+        select_id('Player1B_doubles').value = newDoublesOne[3] + " " + newDoublesOne[4]
+        select_id('Player2A_doubles').value = newDoublesTwo[0] + " " + newDoublesTwo[1]
+        select_id('Player2B_doubles').value = newDoublesTwo[3] + " " + newDoublesTwo[4]
+        select_id('pais3').value = result.data.country[0]
+        select_id('pais4').value = result.data.country[1]
+        select_id('imgNation3').src = result.data.flagsDoubles[0]
+        select_id('imgNation4').src = result.data.flagsDoubles[1]
+      
+  
+    }
+
+    select_id('TournamentTitle').value = result.data.title 
+    select_id('category').value = result.data.category
+    select_id('dateTournament').value = result.data.date
+    select_id('round').value = result.data.round
+  
+
+  }
+
+}
 
 // FIN FUNCIONES GLOBALES //
