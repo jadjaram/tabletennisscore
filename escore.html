@@ -22,7 +22,7 @@
             </button>
         </div>
         <div class="row d-flex justify-content-center my-4 w-100">
-            <div class="col-10" id="view__points">
+            <div class="col-11" id="view__points">
                 <h3 class="text-center fs-1 my-2 text-info" id="tournamentTitleScore"></h3>
                 <h2 class="text-center fs-2 my-2 text-info" id="round"></h2>
                 <table class="table fs-1 table-borderless bg-dark text-white table-striped  boder border-5 border-bottom-0 border-info border-end border-start border-top-0" id="tableScore">
@@ -40,8 +40,18 @@
                             <tr class="trOne g-3">
 
                                     <td style="color: #fff"><img src="./img/flagDefault.jpg" width="40" height="40" class="rounded" alt="flag country" id="flagsPlayerOneInLine"></td>
-                                    <td class="tdPlayer fs-1"> <span id="playerOneScorePoints"></span>
-                                        <span id="iconBallP1" class="fas fa-circle fs-1 text-warning"></span>
+                                    <td class="tdPlayer fs-1">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="d-flex gap-2 justify-content-center align-items-center">
+                                                    <div id="playerOneScorePoints"></div>
+                                                    <span id="iconBallP1" class="fas fa-circle fs-4 text-info"></span>
+                                                    <span id="timeP1" class="fas fa-clock fs-4 text-danger"></span>
+                                                    <span id="yellowP1" class="fas fa-stop fs-4 text-warning"></span>
+                                                    <span id="DyP1" class="fas fa-copy fs-4 text-warning"></span>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </td>
                                     <td class="fs-1 bg-info text-white" id="setPlayerOneInLine">0</td>
                                     <td class="fs-1 points" id="pointsPlayerOneInLine">0
@@ -54,8 +64,18 @@
                                 <td><img src="./img/flagDefault.jpg" width="40" height="40" class="rounded" alt="flag country" id="flagsPlayerTwoInLine">
                                 
                                 </td>
-                                <td class="tdPlayer fs-1"> <span id="playerTwoScorePoints"></span>
-                                    <span id="iconBallP2" class="fas fa-circle fs-1 text-warning"></span>
+                                <td class="tdPlayer fs-1"> 
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="d-flex gap-2 justify-content-center align-items-center">
+                                                <div id="playerTwoScorePoints"></div>
+                                                <span id="iconBallP2" class="fas fa-circle fs-4 text-info"></span>
+                                                <span id="timeP2" class="fas fa-clock fs-4 text-danger"></span>
+                                                <span id="yellowP2" class="fas fa-stop fs-4 text-warning"></span>
+                                                <span id="DyP2" class="fas fa-copy fs-4 text-warning"></span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </td>
                                 <td class="fs-1 bg-info" id="setPlayerTwoInLine">0</td>
                                 <td class="fs-1 points" id="pointsPlayerTwoInLine">0
