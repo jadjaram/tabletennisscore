@@ -55,8 +55,8 @@ function validateCheck(){
   if(checked){
     select_id('box-individual').style.display = 'none'
     select_id('box-dobles').style.display = 'block'
-    select_id('modalInputPlayer1').required = false
-    select_id('modalInputPlayer2').required = false
+    select_id('modalInputPlayer1').disabled = true
+    select_id('modalInputPlayer2').disabled = true
     select_id('Player1A_doubles').required = true
     select_id('Player1B_doubles').required = true
     select_id('Player2A_doubles').required = true
