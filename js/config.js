@@ -57,10 +57,15 @@ function validateCheck(){
     select_id('box-dobles').style.display = 'block'
     select_id('modalInputPlayer1').disabled = true
     select_id('modalInputPlayer2').disabled = true
+     select_id('Player1A_doubles').disabled = false
+    select_id('Player1B_doubles').disabled = false
+    select_id('Player2A_doubles').disabled = false
+    select_id('Player2B_doubles').disabled = false
     select_id('Player1A_doubles').required = true
     select_id('Player1B_doubles').required = true
     select_id('Player2A_doubles').required = true
     select_id('Player2B_doubles').required = true
+    
     
     modoIndividual.checked = false
   }
@@ -75,10 +80,12 @@ function validateCheckInd(){
     select_id('box-dobles').style.display = 'none'
     select_id('modalInputPlayer1').required = true
     select_id('modalInputPlayer2').required = true
-    select_id('Player1A_doubles').required = false
-    select_id('Player1B_doubles').required = false
-    select_id('Player2A_doubles').required = false
-    select_id('Player2B_doubles').required = false
+     select_id('modalInputPlayer1').disabled = false
+    select_id('modalInputPlayer2').disabled = false
+    select_id('Player1A_doubles').disabled = true
+    select_id('Player1B_doubles').disabled = true
+    select_id('Player2A_doubles').disabled = true
+    select_id('Player2B_doubles').disabled = true
     modoDoubles.checked = false
   }
 }
