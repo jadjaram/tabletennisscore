@@ -108,7 +108,7 @@ function readDataStorage(){
                 showTable()
             }
         }
-    },2000)
+    },1000)
 
 }
 
@@ -141,7 +141,7 @@ function readStorage(){
                 select_id('iconBallP1').style.opacity = 0
                 select_id('iconBallP1').style.visibility = 'hidden'
                 
-            }else if (data.InitialService.player1 ===  false && data.InitialService.player1 === false ){
+            }else if (data.InitialService.player1 ===  false && data.InitialService.player2 === false ){
                 select_id('iconBallP2').style.opacity = 0
                 select_id('iconBallP1').style.opacity = 0
                 select_id('iconBallP1').style.visibility = 'hidden'
@@ -190,6 +190,41 @@ function readStorage(){
         select_id('setsResumePlayer1').innerHTML = data.Sets.player1.countSets
         select_id('setsResumePlayer2').innerHTML = data.Sets.player2.countSets
 
+        if(data.cards.player1.time === true){
+            select_id('timeP1').style.display = 'block'
+        }else{
+            select_id('timeP1').style.display = 'none'
+        }
+
+        if(data.cards.player1.yellowCard === true){
+            select_id('yellowP1').style.display = 'block'
+        }else{
+            select_id('yellowP1').style.display = 'none'
+        }
+        if(data.cards.player1.doubleYellow === true){
+            select_id('DyP1').style.display = 'block'
+        }else{
+            select_id('DyP1').style.display = 'none'
+        }
+
+        if(data.cards.player2.time === true){
+            select_id('timeP2').style.display = 'block'
+        }else{
+            select_id('timeP2').style.display = 'none'
+        }
+
+        if(data.cards.player2.yellowCard === true){
+            select_id('yellowP2').style.display = 'block'
+        }else{
+            select_id('yellowP2').style.display = 'none'
+        }
+        if(data.cards.player2.doubleYellow === true){
+            select_id('DyP2').style.display = 'block'
+        
+        }else{
+            select_id('DyP2').style.display = 'none'
+        }
+
     }else{
 
         location.reload()
@@ -232,6 +267,7 @@ function showTable(){
 
     count = 0;
     counterTime = 0;
+    readStorage()
 
 }
 
