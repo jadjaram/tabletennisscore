@@ -9,7 +9,7 @@ body{
     background: #222;
     /* background: url("../img/table-Tennis-found.jpg") no-repeat center center/cover; */
     font-size: 14px !important;
-    overflow: hidden;
+    overflow: auto;
 }
  
 .table-match{
