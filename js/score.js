@@ -82,11 +82,14 @@ function getPlayerStorage(){
         select_id('btn1').style.display = "block"
         select_id('btn2').style.display = "block"
 
+
+
     }else{
 
         clearInterval(runIntervalShow);
         const html = `<div><h1 class="fs-1 text-white fw-bold>Programación en curso...</h1></div>`
-        select_id('view__points').innerHTML += '<div><h1 class="fs-1 text-white  text-center fw-bold">Programación... en curso</h1></div>';
+        select_id('view__points').innerHTML += '<div class="container"><h1 class="fs-1 text-white  text-center fw-bold">Programación... en curso</h1></div>';
+        select_id('view__points').innerHTML += '<div class="d-flex justify-content-center"><video src="/img/table-tennis.mp4" width="100%" height="480" autoplay loop="true"</video></div>';
         select_id('tableScoreView').style.display = "none"
         select_id('tableScore').style.display =  'none'
         select_id('btn1').style.display = "none"
@@ -101,10 +104,9 @@ function readDataStorage(){
     runIntervalShow =  setInterval(()=>{
         readStorage()
         counterTime ++;
-        //console.log(counterTime);
-        if(counterTime === 20){
+        if(counterTime === 50){
             takeTime = counterTime
-            if(takeTime === 20){
+            if(takeTime === 50){
                 showTable()
             }
         }
@@ -224,6 +226,8 @@ function readStorage(){
         }else{
             select_id('DyP2').style.display = 'none'
         }
+        
+
 
     }else{
 
@@ -244,21 +248,23 @@ select_id('btn1').onclick = ()=>{
 
 select_id('btn2').onclick = ()=>{showManualTable()}
 
+function showManualTable(){
 
-
-
+    select_id('tableScore').classList.toggle('hidden')
+    select_id('tableScoreView').classList.toggle('active')
+    counterTime = 0;
+}
 function showTable(){
 
     let count = 0;
     timeInterval = setInterval(() => {
         count ++;
-        select_id('tableScoreView').style.visibility = 'visible'
-        select_id('tableScoreView').style.opacity = 1
-
-        if(count === 20){
+        select_id('tableScore').classList.add('hidden')
+        select_id('tableScoreView').classList.add('active')
+        if(count === 5){
             clearInterval(timeInterval)
-            select_id('tableScoreView').style.visibility = 'hidden'
-            select_id('tableScoreView').style.opacity = 0
+            select_id('tableScore').classList.remove('hidden')
+            select_id('tableScoreView').classList.remove('active')
             count = 0;
             
         }
@@ -268,14 +274,6 @@ function showTable(){
     count = 0;
     counterTime = 0;
     readStorage()
-
-}
-
-function showManualTable(){
-
-    select_id('tableScoreView').style.visibility = 'visible'
-    select_id('tableScoreView').style.opacity = 1
-    showTable()
 
 }
 
