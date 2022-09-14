@@ -1,5 +1,4 @@
 // CONTROALDOR DE CRONOMENTRO //
-
 let stopwatchInterval;
 let runningTime = 0;
 let t = 0;
@@ -178,6 +177,8 @@ const calculateTime = runningTime => {
         localStorage.setItem("matchActual", JSON.stringify(result.data))
     if(valueP2 <= 9 && valueP1 > 10){
         
+        result.data.changeSets = true
+        localStorage.setItem("matchActual", JSON.stringify(result.data))
         saveScoreInLineOne(valueP1, 1);
         countSetPlayer(1)
         select_id("setPlayer1").value = result.data.Sets.player1.countSets + 1;
@@ -217,6 +218,8 @@ const calculateTime = runningTime => {
 
                 }else if(dif > 1){
 
+                    result.data.changeSets = true
+                    localStorage.setItem("matchActual", JSON.stringify(result.data))
                     saveScoreInLineOne(valueP1, 1);
                     countSetPlayer(1)
                     select_id("setPlayer1").value = result.data.Sets.player1.countSets + 1;
@@ -225,7 +228,7 @@ const calculateTime = runningTime => {
                     select_id("BtnPlusPlayer1").disabled = true
                     stateSet = false
                     select_id('EndSet').disabled = false;
-                   
+
                 }
     }
    
@@ -253,6 +256,8 @@ const calculateTime = runningTime => {
         select_id("BtnPlusPlayer1").disabled = true
         stateSet = false
         select_id('EndSet').disabled = false;
+        result.data.changeSets = true
+        localStorage.setItem("matchActual", JSON.stringify(result.data))
         return
     
     }else{
@@ -290,7 +295,8 @@ const calculateTime = runningTime => {
                     select_id("BtnPlusPlayer1").disabled = true
                     stateSet = false
                     select_id('EndSet').disabled = false;
-                    
+                    result.data.changeSets = true
+                    localStorage.setItem("matchActual", JSON.stringify(result.data))
                 }
     }
         
@@ -616,6 +622,8 @@ function changeService(){
     }
      
      serviceMatch()
+     result.data.changeSets = false
+     localStorage.setItem("matchActual", JSON.stringify(result.data))
 
     //if(result.data.service.player1 === false){
     //    serviceMatch()
@@ -654,30 +662,9 @@ function changeService(){
 
 }
 
-select_id('GiroScore').onclick = ()=>{changeSide()}
+select_id('GiroScore').onclick = ()=>{giro()}
 
-function changeSide(){
 
-    const result = getDataLocalStorage()
-    if(result.data){
-        var setsForMatch = result.data.bestOf
-        if(setsForMatch === "5" && result.data.Sets.player1.countSets === 2 && result.data.Sets.player2.countSets === 2){
-            giro()
-        }
-        else if(setsForMatch === "7" && result.data.Sets.player1.countSets === 3 && result.data.Sets.player2.countSets === 3){
-            giro()
-        }else{
-            Swal.fire({
-                position: 'top',
-                icon: 'error',
-                title: `No hay igualdad al mejor de ${result.data.bestOf} sets`,
-                showConfirmButton: false,
-                timer: 1500
-              })
-        }
-    }
-
-}
 
 function giro(){
 
@@ -737,18 +724,3 @@ select_id('view_match').onclick = ()=>{
     window.open('escore.html')
 }
             
-                            // if(valueP1 === 10 && setsForMatch === "5" && parseInt(select_id("setPlayer1").value) === 2 && valueP2 < 10 ){
-                            //     select_id('set-point1').classList.add('active')
-                            //     select_id('set-point1').innerText = "SET POINT"   
-                            // }else{
-                            //      select_id('set-point1').innerText = ""
-                            //      select_id('set-point1').classList.remove('active')
-                            // }
-
-                            // if(valueP1 === 10 && setsForMatch === "7" && parseInt(select_id("setPlayer1").value) === 3 && valueP2 < 10 ){
-                            //     select_id('set-point1').classList.add('active')
-                            //     select_id('set-point1').innerText = "SET POINT"   
-                            // }else{
-                            //      select_id('set-point1').innerText = ""
-                            //      select_id('set-point1').classList.remove('active')
-                            // }
