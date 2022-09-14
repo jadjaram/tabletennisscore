@@ -562,7 +562,8 @@ function changeService(){
  select_id('EndSet').onclick = ()=> changeSet()
 
  function changeSet(){
-
+    
+    CountSet()
     stateSet = true;
     const result =  getDataLocalStorage()//Storage
     result.data.stateSet = stateSet
@@ -615,7 +616,7 @@ function changeService(){
 
     select_id("BtnPlusPlayer2").disabled = false;
     select_id("BtnPlusPlayer1").disabled = false;
-    CountSet()
+  
 
    if(stateSet === true){
         select_id('EndSet').disabled = true;
