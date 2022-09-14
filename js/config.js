@@ -1,5 +1,3 @@
-//$('#ModalTW').modal({backdrop: 'static', keyboard: false})
-
 const urlFlagsCountry = 'https://countryflagsapi.com/png/';
 var selectedCountry;
 var dataSaveLocal = {};
@@ -228,6 +226,7 @@ function saveInfoMatch(){
   dataSaveLocal.category = category
   dataSaveLocal.bestOf = numberSets
   dataSaveLocal.round = round
+  dataSaveLocal.changeSets = false
   dataSaveLocal.modality = modo
   dataSaveLocal.PlayerDoubles = [player1ADouble + " / " + player1BDouble, player2ADouble + " / " + player2BDouble]
   dataSaveLocal.flagsDoubles = [flag_doubleOne, flag_doubleTwo]
@@ -281,7 +280,7 @@ function saveInfoMatch(){
 
 
   saveLocalStorage("matchActual", dataSaveLocal)
-  //window.open('https://jadjaram.github.io/tabletennisscore/escore.html')
+
 }
 
 function saveLocalStorage(key,data){
@@ -289,8 +288,8 @@ function saveLocalStorage(key,data){
         localStorage.setItem(key, JSON.stringify(data))
         
         readDataLocal()
-}
 
+}
 
 function readDataLocal(){
     
@@ -961,6 +960,6 @@ function saveChangeConfig(){
 
   }
 
-}
 
-// FIN FUNCIONES GLOBALES //
+
+}
