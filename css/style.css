@@ -3,6 +3,12 @@ body{
     overflow: hidden;
 }
 
+.change-color{
+    position: absolute;
+    height: 100px;
+    left: 20px;
+
+}
 .body-score.active{
     background: #026502;
 }
@@ -15,59 +21,88 @@ body{
 #tableScore{
     padding-left: 40px;
     margin-top: 20px;
+    -webkit-box-shadow: -1px 3px 5px 5px rgba(250,245,250,1);
+    -moz-box-shadow: -1px 3px 5px 5px rgba(250,245,250,1);
+    box-shadow: -1px 3px 5px 5px rgba(250,245,250,1);
 
 }
 
-#btn1{
+.cont{
+    margin-left: 0 !important;
+}
+
+#btn1, #btn2{
+    outline: none !important;
+    background: none;
     border: none;
 }
 
-
+.fa-circle{
+    background: #026502;
+} */
 .container-fluid{
     height: 100vh !important;
 }
 
-
+#tournamentTitleScore{
+    font-size: 2.8rem !important;
+}
+.thead-score, .theadResume{
+    font-size: 3.5rem;
+}
 .tdPlayer{
 
-    font-size: 1.2rem;
+    font-size: 4.1rem !important;
     color: #fff;
 }
 
+.fa-circle{
+    background: none !important;
+}
 
-/* .tdSets{
-    background-color: orange !important;
-    color:#fff;
-    font-size: 1.5rem;
-} */
+#setPlayerTwoInLine, #setPlayerOneInLine {
+    font-size: 7.5rem !important;
+}
 
 .points{
 
-    font-size: 2rem;
+    font-size: 7.5rem !important;
     color: #fff;
 }
 
-.tableScore{
-    display: flex;
+
+
+.tableScore.hidden{
+
+    display: none;
+
+
+}
+
+.trOne, .trTwo{
+    font-size: 2.8rem;
 }
 
 #tableScoreView{
     transition: .4s all;
+    -webkit-box-shadow: -1px 3px 5px 5px rgba(250,245,250,1);
+    -moz-box-shadow: -1px 3px 5px 5px rgba(250,245,250,1);
+    box-shadow: -1px 3px 5px 5px rgba(250,245,250,1);
 }
 #tableScoreView{
-    visibility: hidden;
-    opacity: 0;
+    display: none;
+}
+
+#tableScoreView.active{
+    display: block;
 }
 
 #iconballP1, #iconballP2{
 
     background: none;
-    color: orange !important;
-    /* position: absolute;
-    left: 680px;
-    top: 380px; */
-    padding-left: 20px;
-    visibility: hidden;
-    opacity:  0;
+    color: orange;
+    position: absolute;
+    left: 480px;
+    opacity: 0;
     transition: .6s all;
 }
