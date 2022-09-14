@@ -16,7 +16,7 @@ let stateSet;
 let indicador = 0
 let alternator;
 
-const res =  JSON.parse(localStorage.getItem("matchActual"))//Storage
+const res =  JSON.parse(localStorage.getItem("matchActual"))
 
  if(res){
     
