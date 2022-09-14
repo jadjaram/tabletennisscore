@@ -14,20 +14,21 @@
 
     <div class="container-fluid d-flex justify-content-center">   
         <div class="col-1 bg d-flex g-2 flex-column change-color">
-            <button type="button" id="btn1" class="btn btn-outline-light btn-sm mt-2 w-50">
+            <button type="button" id="btn1" class="mt-2 w-50">
                 <i class="fas fa-circle fs-2 text-success" id="btn1Icon" style="color: #222 ;"></i>
             </button>
-            <button type="button" id="btn2" class="btn btn-sm mt-2 w-50">
+            <button type="button" id="btn2" class="mt-2 w-50">
                 <i class="fas fa-table fs-2 text-white"></i>
             </button>
         </div>
-        <div class="row d-flex justify-content-center my-4 w-100">
+        <div class="row d-flex justify-content-center my-1 w-100">
             <div class="col-11" id="view__points">
+                <div id="box-comming"></div>
                 <h3 class="text-center fs-1 my-2 text-info" id="tournamentTitleScore"></h3>
                 <h2 class="text-center fs-2 my-2 text-info" id="round"></h2>
-                <table class="table fs-1 table-borderless bg-dark text-white table-striped  boder border-5 border-bottom-0 border-info border-end border-start border-top-0" id="tableScore">
-                    <thead class="text-center fs-1">
-                        <tr>
+                <table class="table fs-1 table-borderless bg-dark text-white table-striped  boder border-5 border-bottom-0 border-info border-end border-start border-top-0 tableScore" id="tableScore">
+                    <thead class="text-center fs-1 thead-score">
+                        <tr class="text-center">
                             <th></th>
                             <th>Players</th>
                             <th>Sets</th>
@@ -39,7 +40,7 @@
                           
                             <tr class="trOne g-3">
 
-                                    <td style="color: #fff"><img src="./img/flagDefault.jpg" width="40" height="40" class="rounded" alt="flag country" id="flagsPlayerOneInLine"></td>
+                                    <td style="color: #fff"><img src="./img/flagDefault.jpg" width="60" height="60" class="rounded" alt="flag country" id="flagsPlayerOneInLine"></td>
                                     <td class="tdPlayer fs-1">
                                         <div class="row">
                                             <div class="col-12">
@@ -53,7 +54,7 @@
                                             </div>
                                         </div>
                                     </td>
-                                    <td class="fs-1 bg-info text-dark" id="setPlayerOneInLine">0</td>
+                                    <td class="fs-1 bg-info text-dark fw-bold" id="setPlayerOneInLine">0</td>
                                     <td class="fs-1 points" id="pointsPlayerOneInLine">0
                                        
                                     </td>
@@ -61,7 +62,7 @@
                                 </div>
                             </tr>
                             <tr>
-                                <td><img src="./img/flagDefault.jpg" width="40" height="40" class="rounded" alt="flag country" id="flagsPlayerTwoInLine">
+                                <td><img src="./img/flagDefault.jpg" width="60" height="60" class="rounded" alt="flag country" id="flagsPlayerTwoInLine">
                                 
                                 </td>
                                 <td class="tdPlayer fs-1"> 
@@ -77,7 +78,7 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td class="fs-1 bg-info dark" id="setPlayerTwoInLine">0</td>
+                                <td class="fs-1 bg-info text-dark fw-bold" id="setPlayerTwoInLine">0</td>
                                 <td class="fs-1 points" id="pointsPlayerTwoInLine">0
                                     
                                 
@@ -87,9 +88,9 @@
                 </table>
             </div>
 
-            <div class="col-8 my-2 tableScore" id="tableScoreView">
+            <div class="col-10 my-2 tableScore" id="tableScoreView">
                 <table class="table bg-dark table-striped table-bordered text-white">
-                    <thead class="text-center text-dark bg-info">
+                    <thead class="text-center text-dark bg-info theadResume">
                         <tr>
                             <th>Players</th>
                             <th>1</th>
@@ -103,9 +104,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                           <tr class="text-center text-white">
+                           <tr class="text-center text-white trOne">
                                 <td>
-                                    <img src="./img/flagDefault.jpg" width="20" height="20" class="rounded" alt="flag country" id="tableScorePlayerOne">
+                                    <img src="./img/flagDefault.jpg" width="60" height="60" class="rounded" alt="flag country" id="tableScorePlayerOne">
                                     <span id="playerOneScoreInLine"></span>
                                 </td>
                                 <td id="tableScore1P1">0</td>
@@ -117,9 +118,9 @@
                                 <td id="tableScore7P1">0</td>
                                 <td id="setsResumePlayer1">0</td>
                           </tr>
-                           <tr class="text-center">
+                           <tr class="text-center trTwo">
                                 <td>
-                                    <img src="./img/flagDefault.jpg" width="20" height="20" class="rounded" alt="flag country" id="tableScorePlayerTwo">
+                                    <img src="./img/flagDefault.jpg" width="60" height="60" class="rounded" alt="flag country" id="tableScorePlayerTwo">
                                     <span id="playerTwoScoreInLine"></span>
                                 </td>
                                 <td id="tableScore1P2">0</td>
@@ -140,6 +141,7 @@
     </div>
     <script src=https://code.jquery.com/jquery-3.6.0.js></script>
     <script src="js/score.js"></script>
+    <script src="js/interface.js"></script>
 
 </body>
 </html>
