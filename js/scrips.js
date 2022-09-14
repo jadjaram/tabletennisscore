@@ -167,8 +167,10 @@ const calculateTime = runningTime => {
  function sumScoreP1(){
 
     const result = getDataLocalStorage()
+
         valueP2 = parseInt(select_id('player2').value)
         valueP1 = parseInt(select_id('player1').value)
+
         select_id("BtnMinusPlayer1").disabled = false
         valueP1 = valueP1 + 1 
         select_id('player1').value = valueP1
@@ -176,9 +178,6 @@ const calculateTime = runningTime => {
         result.data.alternator = alternator
         localStorage.setItem("matchActual", JSON.stringify(result.data))
     if(valueP2 <= 9 && valueP1 > 10){
-        
-        result.data.changeSets = true
-        localStorage.setItem("matchActual", JSON.stringify(result.data))
         saveScoreInLineOne(valueP1, 1);
         countSetPlayer(1)
         select_id("setPlayer1").value = result.data.Sets.player1.countSets + 1;
@@ -218,8 +217,6 @@ const calculateTime = runningTime => {
 
                 }else if(dif > 1){
 
-                    result.data.changeSets = true
-                    localStorage.setItem("matchActual", JSON.stringify(result.data))
                     saveScoreInLineOne(valueP1, 1);
                     countSetPlayer(1)
                     select_id("setPlayer1").value = result.data.Sets.player1.countSets + 1;
@@ -256,8 +253,6 @@ const calculateTime = runningTime => {
         select_id("BtnPlusPlayer1").disabled = true
         stateSet = false
         select_id('EndSet').disabled = false;
-        result.data.changeSets = true
-        localStorage.setItem("matchActual", JSON.stringify(result.data))
         return
     
     }else{
@@ -295,8 +290,7 @@ const calculateTime = runningTime => {
                     select_id("BtnPlusPlayer1").disabled = true
                     stateSet = false
                     select_id('EndSet').disabled = false;
-                    result.data.changeSets = true
-                    localStorage.setItem("matchActual", JSON.stringify(result.data))
+
                 }
     }
         
@@ -317,8 +311,6 @@ function resScoreP1(){
         return
     }
 
-    
-      
         select_id("BtnPlusPlayer1").disabled = false
 
         valueP1 = valueP1 - 1 
@@ -422,11 +414,6 @@ if(valueP2 < 1){
     
             
   }
-
-
-
-
-
 
 
 // END CONTROL SCORE PLAYERS /
@@ -562,7 +549,6 @@ function changeService(){
  select_id('EndSet').onclick = ()=> changeSet()
 
  function changeSet(){
-    
     CountSet()
     stateSet = true;
     const result =  getDataLocalStorage()//Storage
@@ -616,15 +602,12 @@ function changeService(){
 
     select_id("BtnPlusPlayer2").disabled = false;
     select_id("BtnPlusPlayer1").disabled = false;
-  
+    serviceMatch()
 
    if(stateSet === true){
         select_id('EndSet').disabled = true;
     }
-     
-     serviceMatch()
-     result.data.changeSets = false
-     localStorage.setItem("matchActual", JSON.stringify(result.data))
+ 
 
     //if(result.data.service.player1 === false){
     //    serviceMatch()
