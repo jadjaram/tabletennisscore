@@ -884,82 +884,108 @@ async function saveChangeConfig(){
 
   if(result.data){
 
-    var check = modoIndividual.checked
+        var check = modoIndividual.checked
 
-    if(result.data.bestOf === "7"){
-      bestOfThree.checked = false
-      bestOfFour.checked = true
-    }else{
-      bestOfThree.checked = true
-      bestOfFour.checked = false
-    }
+        if(result.data.bestOf === "7"){
+          bestOfThree.checked = false
+          bestOfFour.checked = true
+        }else{
+          bestOfThree.checked = true
+          bestOfFour.checked = false
+        }
     
 
-    if(result.data.modality === "individual"){
-      modoIndividual.checked = true
-      modoDoubles.checked = false
-      select_id('box-individual').style.display = 'block'
-      select_id('box-dobles').style.display = 'none'
+        if(result.data.modality === "individual"){
+          modoIndividual.checked = true
+          modoDoubles.checked = false
+          select_id('box-individual').style.display = 'block'
+          select_id('box-dobles').style.display = 'none'
 
-      if(check){
+          if(check){
 
-        select_id('modalInputPlayer1').required = true
-        select_id('modalInputPlayer2').required = true
-        select_id('Player1A_doubles').required = false
-        select_id('Player1B_doubles').required = false
-        select_id('Player2A_doubles').required = false
-        select_id('Player2B_doubles').required = false
+            select_id('modalInputPlayer1').required = true
+            select_id('modalInputPlayer2').required = true
+            select_id('Player1A_doubles').required = false
+            select_id('Player1B_doubles').required = false
+            select_id('Player2A_doubles').required = false
+            select_id('Player2B_doubles').required = false
 
-        select_id('modalInputPlayer1').value = result.data.players[0]
-        select_id('modalInputPlayer2').value = result.data.players[1]
-        select_id('pais').value = result.data.country[0]
-        select_id('pais2').value = result.data.country[1]
-        select_id('imgNation').src = result.data.flags[0]
-        select_id('imgNation2').src = result.data.flags[1]
-      }
-    
-    }
+            select_id('modalInputPlayer1').value = result.data.players[0]
+            select_id('modalInputPlayer2').value = result.data.players[1]
+            select_id('pais').value = result.data.country[0]
+            select_id('pais2').value = result.data.country[1]
+            select_id('imgNation').src = result.data.flags[0]
+            select_id('imgNation2').src = result.data.flags[1]
+          }
 
-    if(result.data.modality === 'dobles'){
+        }
 
-      modoDoubles.checked = true
-      modoIndividual.checked = false
+        if(result.data.modality === 'dobles'){
 
-      select_id('modalInputPlayer1').required = false
-      select_id('modalInputPlayer2').required = false
-      select_id('Player1A_doubles').required = true
-      select_id('Player1B_doubles').required = true
-      select_id('Player2A_doubles').required = true
-      select_id('Player2B_doubles').required = true
+          modoDoubles.checked = true
+          modoIndividual.checked = false
 
-      select_id('box-individual').style.display = 'none'
-      select_id('box-dobles').style.display = 'block'
+          select_id('modalInputPlayer1').required = false
+          select_id('modalInputPlayer2').required = false
+          select_id('Player1A_doubles').required = true
+          select_id('Player1B_doubles').required = true
+          select_id('Player2A_doubles').required = true
+          select_id('Player2B_doubles').required = true
+
+          select_id('box-individual').style.display = 'none'
+          select_id('box-dobles').style.display = 'block'
 
 
-        const doublesOne = result.data.PlayerDoubles[0]
-        const doublesTwo = result.data.PlayerDoubles[1]
-         newDoublesOne = doublesOne.split(" ")
-         newDoublesTwo = doublesTwo.split(" ")
+            const doublesOne = result.data.PlayerDoubles[0]
+            const doublesTwo = result.data.PlayerDoubles[1]
+             newDoublesOne = doublesOne.split(" ")
+             newDoublesTwo = doublesTwo.split(" ")
 
-        select_id('Player1A_doubles').value = newDoublesOne[0] + " " + newDoublesOne[1]
-        select_id('Player1B_doubles').value = newDoublesOne[3] + " " + newDoublesOne[4]
-        select_id('Player2A_doubles').value = newDoublesTwo[0] + " " + newDoublesTwo[1]
-        select_id('Player2B_doubles').value = newDoublesTwo[3] + " " + newDoublesTwo[4]
-        select_id('pais3').value = result.data.country[0]
-        select_id('pais4').value = result.data.country[1]
-        select_id('imgNation3').src = result.data.flagsDoubles[0]
-        select_id('imgNation4').src = result.data.flagsDoubles[1]
-      
-  
-    }
+            select_id('Player1A_doubles').value = newDoublesOne[0] + " " + newDoublesOne[1]
+            select_id('Player1B_doubles').value = newDoublesOne[3] + " " + newDoublesOne[4]
+            select_id('Player2A_doubles').value = newDoublesTwo[0] + " " + newDoublesTwo[1]
+            select_id('Player2B_doubles').value = newDoublesTwo[3] + " " + newDoublesTwo[4]
+            select_id('pais3').value = result.data.country[0]
+            select_id('pais4').value = result.data.country[1]
+            select_id('imgNation3').src = result.data.flagsDoubles[0]
+            select_id('imgNation4').src = result.data.flagsDoubles[1]
 
-    select_id('TournamentTitle').value = result.data.title 
-    select_id('category').value = result.data.category
-    select_id('dateTournament').value = result.data.date
-    select_id('round').value = result.data.round
-  
+
+        }
+
+          select_id('TournamentTitle').value = result.data.title 
+          select_id('category').value = result.data.category
+          select_id('dateTournament').value = result.data.date
+          select_id('round').value = result.data.round
+
 
   }
+    
+  
+    result.data.PlayerDoubles = result.data.PlayerDoubles
+    result.data.flagsDoubles = result.data.flagsDoubles
+
+    result.data.sumSets =  result.data.sumSets
+    result.data.alternator =  result.data.alternator
+    result.data.indexPlayer = result.data.indexPlayer
+    result.data.service.servicePlayer1 = result.data.service.servicePlayer1 
+    result.data.service.servicePlayer2 = result.data.service.servicePlayer
+    result.data.stateSet = result.data.stateSet 
+    result.data.service.player1 = result.data.service.player1
+    result.data.service.player2 = result.data.service.player2
+  
+    result.data.InitialService.player1 = result.data.InitialService.player1
+    result.data.InitialService.player2 = result.data.InitialService.player2
+
+ 
+  result.data.Sets.player1.score = result.data.Sets.player1.score
+  result.data.Sets.player2.score = result.data.Sets.player2.score
+  result.data.Sets.player1.sets = result.data.Sets.player1.sets
+  result.data.Sets.player2.sets = result.data.Sets.player2.sets
+  
+  result.data.Sets.player1.countSets = result.data.Sets.player1.countSets
+  result.data.Sets.player2.countSets = result.data.Sets.player2.countSets
+
 
 
 
