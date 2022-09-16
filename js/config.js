@@ -173,7 +173,7 @@ function validateCheckInd(){
   }
 
    
-function saveInfoMatch(){
+async function saveInfoMatch(){
   
   var player1 =  select_id('modalInputPlayer1').value
   var countryP1 =  select_id('pais').value || select_id('pais3').value
@@ -235,6 +235,7 @@ function saveInfoMatch(){
   dataSaveLocal.flags = [flagP1, flagP2]
   dataSaveLocal.sumSets = 0
   dataSaveLocal.alternator = 0
+  dataSaveLocal.indexPlayer = 0;
   dataSaveLocal.service = {
     servicePlayer1:false,
     servicePlayer2:false
@@ -279,21 +280,21 @@ function saveInfoMatch(){
   }
 
 
-  saveLocalStorage("matchActual", dataSaveLocal)
+  await saveLocalStorage("matchActual", dataSaveLocal)
 
 }
 
-function saveLocalStorage(key,data){
+async function saveLocalStorage(key,data){
       
         localStorage.setItem(key, JSON.stringify(data))
         
-        readDataLocal()
+       await readDataLocal()
 
 }
 
-function readDataLocal(){
+async function readDataLocal(){
     
-  const result = getDataLocalStorage()
+  const result = await getDataLocalStorage()
 
   var newDoublesOne = []
   var newDoublesTwo = []
@@ -659,9 +660,9 @@ function saveScoreInLineTwo(score, set){
            //Storage
 
 
- function saveServicePlayer(n){
+ async function saveServicePlayer(n){
 
-  const result =  getDataLocalStorage()//Storage
+  const result = await getDataLocalStorage()//Storage
 
   if(result.data.service.servicePlayer1 === false && result.data.service.servicePlayer1 === false){
 
@@ -692,9 +693,9 @@ function saveScoreInLineTwo(score, set){
  }
 
 
-function setCardPlayer(player, card){
+async function setCardPlayer(player, card){
 
-  const result =  getDataLocalStorage() //Storage
+  const result = await getDataLocalStorage() //Storage
 
   if(result.data){
 
@@ -740,9 +741,9 @@ function setCardPlayer(player, card){
 
 // MOSTAR TODOS LOS LOCALS STORAGE var miStorage = window.localStorage;
 
-function CountSet(){
+async function CountSet(){
 
-  const result =  getDataLocalStorage()//Storage
+  const result = await getDataLocalStorage()//Storage
 
   if(result.data){
 
@@ -763,9 +764,9 @@ function CountSet(){
   
 }
 
-function countSetPlayer(n){
+ async function countSetPlayer(n){
 
-  const result =  getDataLocalStorage()//Storage
+  const result = await getDataLocalStorage()//Storage
 
   if(result.data){
 
@@ -819,9 +820,9 @@ function deleteStorage(){
 
 }
 
-function getDataLocalStorage(){
+async function getDataLocalStorage(){
 
-  const data =  JSON.parse(localStorage.getItem("matchActual"))//Storage
+  const data = await JSON.parse(localStorage.getItem("matchActual"))//Storage
   return { data }
 }
 
@@ -877,11 +878,11 @@ function deleteCardPlayer(id){
 
 }
 
-function saveChangeConfig(){
+async function saveChangeConfig(){
 
-  const result = getDataLocalStorage()
+  const result = await getDataLocalStorage()
 
-  if(result){
+  if(result.data){
 
     var check = modoIndividual.checked
 
