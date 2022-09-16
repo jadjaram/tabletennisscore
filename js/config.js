@@ -986,7 +986,8 @@ async function saveChangeConfig(){
   result.data.Sets.player1.countSets = result.data.Sets.player1.countSets
   result.data.Sets.player2.countSets = result.data.Sets.player2.countSets
 
-
+    getDataLocalStorage()
+    readDataLocal();
 
 
 }
