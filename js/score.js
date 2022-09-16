@@ -87,7 +87,7 @@ function getPlayerStorage(){
     }else{
 
         clearInterval(runIntervalShow);
-        const html = `<div><h1 class="fs-1 text-white fw-bold>Programación en curso...</h1></div>`
+      
         select_id('view__points').innerHTML += '<div class="container"><h1 class="fs-1 text-white  text-center fw-bold">Programación... en curso</h1></div>';
         select_id('view__points').innerHTML += '<div class="d-flex justify-content-center"><video src="/img/table-tennis.mp4" width="100%" height="480" autoplay loop="true"</video></div>';
         select_id('tableScoreView').style.display = "none"
