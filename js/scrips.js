@@ -239,8 +239,11 @@ function changeService(){
     select_id('modalCardsPlayerTwo').disabled = false;
     select_id('timePlayerOne').disabled = false;
     select_id('timePlayerTwo').disabled = false;
+    serviceP1 = 'service'
+    serviceP2 = 'receive'
+    console.log(serviceP1, serviceP2);
     saveServicePlayer(1)
-    ctrChange = true
+    
 
   }
 
@@ -255,8 +258,11 @@ function changeService(){
     select_id('modalCardsPlayerTwo').disabled = false;
     select_id('timePlayerOne').disabled = false;
     select_id('timePlayerTwo').disabled = false;
+    serviceP1 = 'receive'
+    serviceP2 = 'service'
+    console.log(serviceP1, serviceP2);
     saveServicePlayer(2)
-    ctrChange = false
+    
   
   }
 
