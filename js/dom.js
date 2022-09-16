@@ -6,7 +6,8 @@ var indexPlayer = 0;
 let stateSet;
 let set = 0;
 let clicked = 0;
-let ctrChange = false;
+let serviceP1 = "";
+let serviceP2 = "";
 
 const btnPlus1 = select_id('BtnPlusPlayer1')
 const btnPlus2 = select_id('BtnPlusPlayer2')
@@ -109,7 +110,7 @@ btnPlus1.onclick = async ()=> {
     
     if(alternator === 2){
        await serviceMatch()
-        console.log(ctrChange);
+        
     }
 
     if(pointsP1 >10 && pointsP2 < 10){
@@ -125,6 +126,11 @@ btnPlus1.onclick = async ()=> {
           select_id('EndSet').disabled = false
           select_id("BtnPlusPlayer2").disabled = true;
           select_id("BtnPlusPlayer1").disabled = true;
+          select_id('set-point1').style.visibility = 'visible'
+          select_id('set-point1').style.opacity = 1
+          select_id('set-point1').innerHTML = 'confirmar Set'
+          
+
 
     }
 
@@ -135,7 +141,7 @@ btnPlus1.onclick = async ()=> {
   
           if(alternator === 1){
              await serviceMatch()
-             console.log(ctrChange);
+            
           }
   
         }
@@ -152,6 +158,9 @@ btnPlus1.onclick = async ()=> {
         select_id('EndSet').disabled = false
           select_id("BtnPlusPlayer2").disabled = true;
           select_id("BtnPlusPlayer1").disabled = true;
+          select_id('set-point1').style.visibility = 'visible'
+          select_id('set-point1').style.opacity = 1
+          select_id('set-point1').innerHTML = 'confirmar Set'
           indexPlayer = 1;
           result.data.indexPlayer = indexPlayer
           localStorage.setItem("matchActual", JSON.stringify(result.data))
@@ -257,7 +266,7 @@ btnPlus2.onclick = async ()=> {
 ;
     if(alternator === 2){
         await serviceMatch()
-        console.log(ctrChange);
+        
     }
 
     if(pointsP2 > 10 && pointsP1 < 10){
@@ -269,6 +278,9 @@ btnPlus2.onclick = async ()=> {
             showConfirmButton: false,
             timer: 2500
           })
+          select_id('set-point2').style.visibility = 'visible'
+          select_id('set-point2').style.opacity = 1
+          select_id('set-point2').innerHTML = 'confirmar Set'
           indexPlayer = 2
           result.data.indexPlayer = indexPlayer
           localStorage.setItem("matchActual", JSON.stringify(result.data))
@@ -284,7 +296,7 @@ btnPlus2.onclick = async ()=> {
 
         if(alternator === 1){
             await serviceMatch()
-            console.log(ctrChange);
+        
         }
 
       }
@@ -301,6 +313,9 @@ btnPlus2.onclick = async ()=> {
             showConfirmButton: false,
             timer: 2500
           })
+          select_id('set-point2').style.visibility = 'visible'
+          select_id('set-point2').style.opacity = 1
+          select_id('set-point2').innerHTML = 'confirmar Set'
           select_id('EndSet').disabled = false
     
       }
@@ -321,34 +336,22 @@ btnLess1.onclick = async ()=>{
      if(pointsP1 > 0){
 
         clicked ++;
-        if(ctrChange === true && alternator === 1 && clicked === 1){
-
-            alternator = 0;
-
+        if(serviceP1 === 'service' && alternator === 1){
+            alternator = 0
+            clicked = 0
         }
 
-        if(ctrChange === true && alternator === 0 && clicked === 2){
-
-            alternator = 0;
-
-        }
-
-        if(ctrChange === false && alternator === 0 && clicked === 2){
-
-            await serviceMatch()
-
-        }
-
-        if(ctrChange === false && alternator === 1 && clicked === 1){
-
-            await serviceMatch()
-        }
-
-        if(ctrChange === false && alternator === 0 && clicked === 1){
-
+        if(serviceP1 === 'receive' && alternator === 0 && clicked === 1){
             await serviceMatch()
             alternator = 1
+            clicked = 0
         }
+
+        if(clicked === 2){
+            await serviceMatch()
+            clicked = 0
+        }
+
 
         pointsP1 = pointsP1 - 1
         select_id('player1').value = pointsP1
@@ -371,35 +374,23 @@ btnLess2.onclick = async ()=>{
          if(pointsP2 > 0){
         
             clicked ++;
-            if(ctrChange === true && alternator === 1 && clicked === 1){
-    
-                alternator = 0;
-    
+            if(serviceP2 === 'service' && alternator === 1){
+                alternator = 0
+                clicked = 0
             }
     
-            if(ctrChange === true && alternator === 0 && clicked === 2){
-    
-                alternator = 0;
-    
-            }
-    
-            if(ctrChange === false && alternator === 0 && clicked === 2){
-    
-                await serviceMatch()
-    
-            }
-    
-            if(ctrChange === false && alternator === 1 && clicked === 1){
-    
-                await serviceMatch()
-            }
-    
-            if(ctrChange === false && alternator === 0 && clicked === 1){
-    
+            if(serviceP2 === 'receive' && alternator === 0 && clicked === 1){
                 await serviceMatch()
                 alternator = 1
+                clicked = 0
             }
-    
+
+            if(clicked === 2){
+                await serviceMatch()
+                clicked = 0
+            }
+
+
             pointsP2 = pointsP2 - 1
             select_id('player2').value = pointsP2
  
@@ -457,6 +448,14 @@ async function changeSet(){
     
         select_id("BtnPlusPlayer2").disabled = false;
         select_id("BtnPlusPlayer1").disabled = false;
+
+        select_id('set-point1').style.visibility = 'hidden'
+        select_id('set-point1').style.opacity = 0
+        select_id('set-point1').innerHTML = ''
+
+        select_id('set-point2').style.visibility = 'hidden'
+        select_id('set-point2').style.opacity = 0
+        select_id('set-point2').innerHTML = ''
     
         await serviceMatch()
         
@@ -496,13 +495,17 @@ async function serviceMatch(){
         select_id('serviceOne').classList.remove('active')
         result.data.InitialService.player2 = true;
         result.data.InitialService.player1 = false
-        ctrChange = false
+        serviceP1 = 'receive'
+        serviceP2 = 'service'
+        console.log(serviceP1, serviceP2);
     }else{
         select_id('serviceTwo').classList.remove('active')
         select_id('serviceOne').classList.add('active')
         result.data.InitialService.player2 = false;
         result.data.InitialService.player1 = true
-        ctrChange = true
+        serviceP1 = 'service'
+        serviceP2 = 'receive'
+        console.log(serviceP1, serviceP2);
     }
 
     localStorage.setItem("matchActual", JSON.stringify(result.data))
